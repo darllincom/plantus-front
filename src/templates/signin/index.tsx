@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import Loader from "../../components/loader";
 import { LoginContext } from "../../context/auth-provider";
+import Loader from "../../components/loader";
 import Login from "../../layout/login";
+import Divider from '../../components/divider'
 
 export default function SignIn() {
   const { loading } = useContext(LoginContext)
@@ -9,15 +10,16 @@ export default function SignIn() {
   document.title = 'Plantus | Login'
 
   return (
-    <div className="container bg-dark-white max-w-none mx-auto w-screen h-full flex justify-between items-center content-center flex-row">
-      <main className="z-10 w-1/2 h-screen bg-white rounded-br-landing transition-all">
+    <div className="container relative bg-dark-white max-w-none mx-auto w-screen h-full flex justify-between items-center content-center flex-row">
+      <Divider />
+      <main className="z-10 w-1/2 h-screen  rounded-br-landing bg-white transition-all">
         { loading ? (
           <Loader />
         ) : (
           <Login />
         )}
       </main>
-      <aside className="bg-dark-white w-1/2 h-screen rounded-tl-landing"></aside>
+      <aside className="bg-dark-white w-1/2 h-screen"></aside>
     </div>
   )
 }
