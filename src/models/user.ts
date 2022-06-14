@@ -1,3 +1,6 @@
 export type User = {
-  fullName: string
+  cpf: string;
+  fullName: string;
+  office: string;
+  image: string;
 }
