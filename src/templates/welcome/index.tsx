@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { LoginContext } from "../../context/auth-provider"
 import Sidebar from "../../components/sidebar"
 import WelcomeImg from '../../assets/welcome-img.png'
+import Footer from "../../components/footer"
 
 export default function Welcome() {
   const { user, handleLogout } = useContext(LoginContext)
@@ -50,8 +51,7 @@ export default function Welcome() {
           </header>
         </aside>
       </main>
-      <footer className="fixed bottom-0 right-0 w-10/12 h-12 bg-white">   
-      </footer>
+      <Footer />
     </div>
   )
 }
