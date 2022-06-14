@@ -29,7 +29,7 @@ export default function NotFound() {
         </button>
       </main>
       <aside className="w-1/2 relative h-screen bg-dark-white">
-        <img src={NotFoundImg} className="w-full absolute top-32 -left-32 z-30" alt="Não encontramos esse site" />
+        <img src={NotFoundImg} className="w-full absolute top-32 -left-32 z-30 xl:top-44 xl:-left-28" alt="Não encontramos esse site" />
       </aside>
     </div>
   )
