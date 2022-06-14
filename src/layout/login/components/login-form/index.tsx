@@ -1,4 +1,5 @@
 import { FormEvent, useContext, useState } from "react"
+import { Link } from "react-router-dom"
 import { LoginContext } from "../../../../context/auth-provider"
 import cpfMask from "../../../../utils/cpfMask"
 
@@ -16,7 +17,7 @@ export default function LoginForm() {
 
   return (
     <form className="mt-5" onSubmit={handleSubmit}>
-      <fieldset className="relative w-full my-4 xl">
+      <fieldset className="relative w-full my-4 2xl:mt-8">
         <input 
           type="text" 
           id="cpf-login" 
@@ -32,6 +33,9 @@ export default function LoginForm() {
             py-2 px-3 outline-base-green
             placeholder-transparent
             peer
+            2xl:py-3
+            2xl:px-5
+            2xl:text-2xl
           "/>
         <label htmlFor="cpf-login" className="
           absolute left-4 -top-2 z-20
@@ -45,6 +49,11 @@ export default function LoginForm() {
           peer-focus:left-4
           peer-focus:text-base
           peer-focus:text-light-gray
+          2xl:peer-placeholder-shown:top-4
+          2xl:peer-focus:-top-3
+          2xl:text-2xl
+          2xl:peer-focus:text-lg
+          2xl:peer-placeholder-shown:text-2xl
         ">CPF:</label>
         <div className="
           absolute 
@@ -78,6 +87,9 @@ export default function LoginForm() {
             py-2 px-3 outline-base-green
             placeholder-transparent
             peer
+            2xl:py-3
+            2xl:px-5
+            2xl:text-2xl
           "
         />
         <label
@@ -93,6 +105,11 @@ export default function LoginForm() {
           peer-focus:left-4
           peer-focus:text-base
           peer-focus:text-light-gray
+          2xl:peer-placeholder-shown:top-4
+          2xl:peer-focus:-top-3
+          2xl:text-2xl
+          2xl:peer-focus:text-lg
+          2xl:peer-placeholder-shown:text-2xl
           ">SENHA:</label>
         <div className="
           absolute 
@@ -110,9 +127,9 @@ export default function LoginForm() {
           peer-focus:block
         "/>
       </fieldset>
-      { error !== '' ? <span className="text-red-500" >{error}</span> : '' }
+      { error !== '' ? <span className="text-red-500 2xl:text-base" >{error}</span> : '' }
       <div className="flex w-full justify-between items-center content-center xl:mt-10">
-        <a href="" className="text-dark-green font-bold">Esqueci a senha</a>
+        <Link to="/esqueci" className="text-dark-green font-bold xl:text-xl">Esqueci a senha</Link>
         <button
           type="submit"
           className="
@@ -120,6 +137,8 @@ export default function LoginForm() {
             transition-all
             duration-300
             hover:bg-base-hover-green
+            xl:px-10
+            xl:py-3
           ">Entrar</button>
       </div>
     </form>
