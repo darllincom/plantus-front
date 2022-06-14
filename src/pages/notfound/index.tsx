@@ -11,9 +11,9 @@ export default function NotFound() {
   }
 
   return (
-    <div className="container relative max-w-none mx-auto w-screen h-screen bg-dark-white flex justify-between items-center content-center flex-row">
+    <div className="container relative bg-dark-white max-w-none mx-auto w-screen h-screen flex justify-between items-center content-center flex-row">
       <Divider />
-      <main className="w-1/2 rounded-br-landing h-screen bg-white transition-all flex justify-start items-center content-center flex-col">
+      <main className="w-1/2 h-screen bg-white transition-all flex justify-start items-center content-center flex-col">
         <PlantusHeader />
         <h3 className="text-light-gray text-xl mt-20">Página em Construção</h3>
         <button
@@ -29,7 +29,7 @@ export default function NotFound() {
         </button>
       </main>
       <aside className="w-1/2 relative h-screen bg-dark-white">
-        <img src={NotFoundImg} className="w-full absolute top-32 -left-48 z-30" alt="Não encontramos esse site" />
+        <img src={NotFoundImg} className="w-full absolute top-32 -left-32 z-30" alt="Não encontramos esse site" />
       </aside>
     </div>
   )
