@@ -16,7 +16,7 @@ export default function LoginForm() {
 
   return (
     <form className="mt-5" onSubmit={handleSubmit}>
-      <fieldset className="relative w-full h-7 my-6">
+      <fieldset className="relative w-full my-4 xl">
         <input 
           type="text" 
           id="cpf-login" 
@@ -62,7 +62,7 @@ export default function LoginForm() {
           peer-focus:block
         "/>
       </fieldset>
-      <fieldset className="relative w-full h-7 my-10">
+      <fieldset className="relative w-full my-5">
         <input
           type="password"
           id="password"
@@ -111,7 +111,7 @@ export default function LoginForm() {
         "/>
       </fieldset>
       { error !== '' ? <span className="text-red-500" >{error}</span> : '' }
-      <div className="flex w-full justify-between items-center content-center">
+      <div className="flex w-full justify-between items-center content-center xl:mt-10">
         <a href="" className="text-dark-green font-bold">Esqueci a senha</a>
         <button
           type="submit"
