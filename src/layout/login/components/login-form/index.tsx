@@ -15,8 +15,8 @@ export default function LoginForm() {
   }
 
   return (
-    <form className="mt-10" onSubmit={handleSubmit}>
-      <fieldset className="relative w-9/12 h-14 my-6">
+    <form className="mt-5" onSubmit={handleSubmit}>
+      <fieldset className="relative w-full h-7 my-6">
         <input 
           type="text" 
           id="cpf-login" 
@@ -28,8 +28,8 @@ export default function LoginForm() {
           className="
             border-light-green 
             border-2 rounded-xl 
-            w-full text-2xl text-dark-gray 
-            py-3 px-5 outline-base-green
+            w-full text-lg text-dark-gray 
+            py-2 px-3 outline-base-green
             placeholder-transparent
             peer
           "/>
@@ -38,8 +38,8 @@ export default function LoginForm() {
           text-light-gray text-base 
           transition-all
           duration-300
-          peer-placeholder-shown:text-2xl
-          peer-placeholder-shown:top-4
+          peer-placeholder-shown:text-lg
+          peer-placeholder-shown:top-3
           peer-placeholder-shown:left-5
           peer-focus:-top-2
           peer-focus:left-4
@@ -62,7 +62,7 @@ export default function LoginForm() {
           peer-focus:block
         "/>
       </fieldset>
-      <fieldset className="relative w-9/12 h-14 my-6">
+      <fieldset className="relative w-full h-7 my-10">
         <input
           type="password"
           id="password"
@@ -74,25 +74,25 @@ export default function LoginForm() {
           className="
             border-light-green 
             border-2 rounded-xl 
-            w-full text-2xl text-dark-gray 
-            py-3 px-5 outline-base-green
+            w-full text-lg text-dark-gray 
+            py-2 px-3 outline-base-green
             placeholder-transparent
             peer
           "
         />
         <label
           htmlFor="password" className="
-            absolute left-4 -top-2 z-20
-            text-light-gray text-base 
-            transition-all
-            duration-300
-            peer-placeholder-shown:text-2xl
-            peer-placeholder-shown:top-4
-            peer-placeholder-shown:left-5
-            peer-focus:-top-2
-            peer-focus:left-4
-            peer-focus:text-base
-            peer-focus:text-light-gray
+          absolute left-4 -top-2 z-20
+          text-light-gray text-base 
+          transition-all
+          duration-300
+          peer-placeholder-shown:text-lg
+          peer-placeholder-shown:top-3
+          peer-placeholder-shown:left-5
+          peer-focus:-top-2
+          peer-focus:left-4
+          peer-focus:text-base
+          peer-focus:text-light-gray
           ">SENHA:</label>
         <div className="
           absolute 
@@ -111,12 +111,12 @@ export default function LoginForm() {
         "/>
       </fieldset>
       { error !== '' ? <span className="text-red-500" >{error}</span> : '' }
-      <div className="flex w-9/12 justify-between items-center content-center">
+      <div className="flex w-full justify-between items-center content-center">
         <a href="" className="text-dark-green font-bold">Esqueci a senha</a>
         <button
           type="submit"
           className="
-            bg-base-green rounded-lg text-white text-2xl px-7 py-2 shadow-sm
+            bg-base-green rounded-lg text-white text-xl px-7 py-2 shadow-sm
             transition-all
             duration-300
             hover:bg-base-hover-green

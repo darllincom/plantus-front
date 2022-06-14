@@ -10,9 +10,9 @@ export default function SignIn() {
   document.title = 'Plantus | Login'
 
   return (
-    <div className="container relative bg-dark-white max-w-none mx-auto w-screen h-full flex justify-between items-center content-center flex-row">
+    <div className="container relative bg-dark-white max-w-none mx-auto w-screen h-screen flex justify-between items-center content-center flex-row">
       <Divider />
-      <main className="z-10 w-1/2 h-screen  rounded-br-landing bg-white transition-all">
+      <main className="z-10 w-1/2 h-screen bg-white transition-all">
         { loading ? (
           <Loader />
         ) : (
