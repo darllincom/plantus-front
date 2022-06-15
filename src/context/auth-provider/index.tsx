@@ -59,7 +59,7 @@ function AuthProvider({ children }: AuthProps) {
       if (data.accessToken) {
         localStorage.setItem('accessToken', JSON.stringify(data.accessToken))
   
-        api.defaults.headers.common.Authorization = `Bearer ${data.DateaccessToken}`
+        api.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`
   
         setAuthenticate(true)
         getUserFromJWT()

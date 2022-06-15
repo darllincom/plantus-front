@@ -19,7 +19,7 @@ export default function MainTemplate() {
         <section className="w-9/12 px-6">
           <Routes>
             <Route path="" element={<Welcome />} />
-            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/perfil/:id" element={<Perfil />} />
           </Routes>
         </section>
         <ContentBar />

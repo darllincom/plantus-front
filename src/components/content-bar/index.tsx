@@ -1,8 +1,15 @@
 import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { LoginContext } from "../../context/auth-provider"
 
 export default function ContentBar() {
   const { user, handleLogout } = useContext(LoginContext)
+  const navigate = useNavigate()
+
+  function doLogout() {
+    handleLogout!()
+    navigate('/')
+  }
 
   return (
     <aside className="h-screen px-2 py-10 bg-white w-3/12 right-0 top-0 shadow-md">
@@ -12,7 +19,7 @@ export default function ContentBar() {
           <p className="text-base-green text-xs xl:text-lg">{ user?.fullName }</p>
           <p className="text-xs xl:text-base">{user?.office}</p>
         </section>
-        <button onClick={handleLogout} className="bg-light-green py-1 px-3 rounded-lg text-sm xl:text-base">Sair</button>
+        <button onClick={doLogout} className="bg-light-green py-1 px-3 rounded-lg text-sm xl:text-base">Sair</button>
       </header>
     </aside>
   )

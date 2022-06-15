@@ -1,8 +1,12 @@
 import Logo from '../../assets/plantus-logo.png'
 import Grad from '../../assets/grad.png'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { LoginContext } from '../../context/auth-provider'
 
 export default function Sidebar() {
+  const { user } = useContext(LoginContext)
+
   return (
     <aside 
       className="
@@ -16,7 +20,7 @@ export default function Sidebar() {
 			</div>
       <div className="flex items-center justify-start content-center flex-col w-full h-full mt-5 xl:mt-8">
         <Link to="/" className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base">Inicio</Link>
-        <Link to="/perfil" className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base">Perfil</Link>
+        <Link to={`/perfil/${user?.id}`} className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base">Perfil</Link>
         <Link to="/equipe" className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base">Equipe</Link>
         <Link to="/produtos" className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base">Produtos</Link>
       </div>
