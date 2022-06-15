@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { LoginContext } from "../../context/auth-provider"
 
-const { user, handleLogout } = useContext(LoginContext)
-
 export default function ContentBar() {
+  const { user, handleLogout } = useContext(LoginContext)
+
   return (
     <aside className="h-screen px-2 py-10 bg-white w-3/12 right-0 top-0 shadow-md">
       <header className="flex w-full items-center justify-around">
