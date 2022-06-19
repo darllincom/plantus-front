@@ -57,7 +57,7 @@ function AuthProvider({ children }: AuthProps) {
       const { data } = await AuthRepository.handleSignIn(cpf, password)
 
       if (data.accessToken) {
-        localStorage.setItem('accessToken', JSON.stringify(data.accessToken))
+        localStorage.setItem('accessToken', data.accessToken)
   
         api.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`
   
@@ -80,7 +80,7 @@ function AuthProvider({ children }: AuthProps) {
 
   useEffect(() => {
     if (token) {
-      api.defaults.headers.common.Authorization = `Bearer ${JSON.parse(token)}`
+      api.defaults.headers.common.Authorization = `Bearer ${token}`
       setAuthenticate(true)
     }
 

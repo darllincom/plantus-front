@@ -33,12 +33,12 @@ export default function LoginForm() {
             py-2 px-3 outline-base-green
             placeholder-transparent
             peer
-            2xl:py-3
-            2xl:px-5
-            2xl:text-2xl
+            lg:py-3
+            lg:px-5
+            lg:text-2xl
           "/>
         <label htmlFor="cpf-login" className="
-          absolute left-4 -top-2 z-20
+          absolute left-4 -top-3 z-20
           text-light-gray text-base 
           transition-all
           duration-300
@@ -49,18 +49,18 @@ export default function LoginForm() {
           peer-focus:left-4
           peer-focus:text-base
           peer-focus:text-light-gray
-          2xl:peer-placeholder-shown:top-4
-          2xl:peer-focus:-top-3
-          2xl:text-2xl
-          2xl:peer-focus:text-lg
-          2xl:peer-placeholder-shown:text-2xl
+          lg:peer-placeholder-shown:top-4
+          lg:peer-placeholder-shown:text-2xl
+          lg:peer-focus:-top-3
+          lg:text-xl
+          lg:peer-focus:text-lg
         ">CPF:</label>
         <div className="
           absolute 
           z-10
           transition-all
           duration-300
-          left-3 -top-2 w-12 h-5
+          left-3 -top-2 w-14 h-5
           rounded-full
           bg-white 
           peer-placeholder-shown:text-2xl
@@ -87,14 +87,14 @@ export default function LoginForm() {
             py-2 px-3 outline-base-green
             placeholder-transparent
             peer
-            2xl:py-3
-            2xl:px-5
-            2xl:text-2xl
+            lg:py-3
+            lg:px-5
+            lg:text-2xl
           "
         />
         <label
           htmlFor="password" className="
-          absolute left-4 -top-2 z-20
+          absolute left-4 -top-3 z-20
           text-light-gray text-base 
           transition-all
           duration-300
@@ -105,18 +105,18 @@ export default function LoginForm() {
           peer-focus:left-4
           peer-focus:text-base
           peer-focus:text-light-gray
-          2xl:peer-placeholder-shown:top-4
-          2xl:peer-focus:-top-3
-          2xl:text-2xl
-          2xl:peer-focus:text-lg
-          2xl:peer-placeholder-shown:text-2xl
+          lg:peer-placeholder-shown:top-4
+          lg:peer-placeholder-shown:text-2xl
+          lg:peer-focus:-top-3
+          lg:text-xl
+          lg:peer-focus:text-lg
           ">SENHA:</label>
         <div className="
           absolute 
           z-10
           transition-all
           duration-300
-          left-3 -top-2 w-20 h-5
+          left-3 -top-2 w-24 h-5
           rounded-full
           bg-white 
           peer-placeholder-shown:text-2xl
