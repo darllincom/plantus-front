@@ -43,7 +43,7 @@ export default function AddressForm() {
 
 					<fieldset className="relative w-[20%] my-2 lg:mt-4">
 						<input
-              type="number"
+							type="number"
 							className=" 
                     border-light-green 
               border-2 rounded-xl 
@@ -79,7 +79,7 @@ export default function AddressForm() {
 
 					<fieldset className="relative w-[30%] my-2 lg:mt-4">
 						<input
-            type="text"
+							type="text"
 							className=" 
                     border-light-green 
               border-2 rounded-xl 
@@ -117,7 +117,7 @@ export default function AddressForm() {
 				<div className="w-full flex items-center justify-between">
 					<fieldset className="relative w-[48%] my-2 lg:mt-4">
 						<input
-              type="text"
+							type="text"
 							className=" 
                     border-light-green 
               border-2 rounded-xl 
@@ -153,7 +153,7 @@ export default function AddressForm() {
 
 					<fieldset className="relative w-[20%] my-2 lg:mt-4">
 						<input
-              type="text"
+							type="text"
 							className=" 
                     border-light-green 
               border-2 rounded-xl 
@@ -188,8 +188,8 @@ export default function AddressForm() {
 					</fieldset>
 
 					<fieldset className="relative w-[30%] my-2 lg:mt-4">
-						<input 
-            type="text"
+						<input
+							type="text"
 							className=" 
                     border-light-green 
               border-2 rounded-xl 
@@ -227,7 +227,7 @@ export default function AddressForm() {
 				<div className="w-full flex items-center justify-between">
 					<fieldset className="relative w-[69%] my-2 lg:mt-4">
 						<input
-              type="text"
+							type="text"
 							className=" 
                     border-light-green 
               border-2 rounded-xl 

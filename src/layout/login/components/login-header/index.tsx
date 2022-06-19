@@ -1,9 +1,9 @@
-import PlantusHeader from "../../../../components/plantus-header";
+import PlantusHeader from '../../../../components/plantus-header';
 
 export default function LoginHeader() {
 	return (
 		<>
-      <PlantusHeader />
+			<PlantusHeader />
 			<div className="welcome-wrapper mt-10 2xl:mt-20">
 				<h1 className="text-xl font-semibold text-dark-green xl:text-2xl 2xl:text-4xl">
 					Bem-vindo à Plataforma Plantus

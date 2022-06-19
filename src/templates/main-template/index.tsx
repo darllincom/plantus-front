@@ -20,10 +20,10 @@ export default function MainTemplate() {
 			<main className="container fixed right-0 h-screen flex flex-row justify-between w-5/6 max-w-none xl:w-10/12">
 				<section className="w-9/12 px-6 overflow-auto">
 					<ProfileProvider>
-            <Routes>
-              <Route path="" element={<Welcome />} />
-              <Route path="/perfil/:id" element={<Profile />} />
-            </Routes>
+						<Routes>
+							<Route path="" element={<Welcome />} />
+							<Route path="/perfil/:id" element={<Profile />} />
+						</Routes>
 					</ProfileProvider>
 				</section>
 				<ContentBar />

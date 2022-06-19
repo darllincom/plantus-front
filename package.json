@@ -6,7 +6,7 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+		"format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
 		"lint": "eslint ./",
 		"lintFix": "eslint ./ --fix",
 		"postinstall": "husky install"

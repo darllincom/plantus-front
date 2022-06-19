@@ -169,9 +169,9 @@ export default function Profile() {
 										/>
 									</fieldset>
 									<div className="w-100 flex items-center flex-col lg:flex-row">
-                  <fieldset className="relative w-full my-2 lg:mt-4 lg:w-[48%] lg:mr-4">
-										<p
-											className=" 
+										<fieldset className="relative w-full my-2 lg:mt-4 lg:w-[48%] lg:mr-4">
+											<p
+												className=" 
                       border-light-green 
                       border-2 rounded-xl 
                       w-full text-xs text-dark-gray 
@@ -180,21 +180,21 @@ export default function Profile() {
                       lg:py-1
                       lg:px-5
                       lg:text-base"
-										>
-											{new Date(userProfile.birthDate).toLocaleDateString()}
-										</p>
-										<label
-											className="
+											>
+												{new Date(userProfile.birthDate).toLocaleDateString()}
+											</p>
+											<label
+												className="
                       absolute left-4 -top-2 z-20
                       text-light-gray text-xs 
                       transition-all
                       2xl:text-xs
                       "
-										>
-											Data de Nascimento
-										</label>
-										<div
-											className="
+											>
+												Data de Nascimento
+											</label>
+											<div
+												className="
                         absolute 
                         z-10
                         transition-all
@@ -203,11 +203,11 @@ export default function Profile() {
                         rounded-full
                         bg-white 
                       "
-										/>
-									</fieldset>
-									<fieldset className="relative w-full my-2 lg:mt-4">
-										<p
-											className=" 
+											/>
+										</fieldset>
+										<fieldset className="relative w-full my-2 lg:mt-4">
+											<p
+												className=" 
                       border-light-green 
                       border-2 rounded-xl 
                       w-full text-xs text-dark-gray 
@@ -216,21 +216,21 @@ export default function Profile() {
                       lg:py-1
                       lg:px-5
                       lg:text-base"
-										>
-											{userProfile.credentials.email}
-										</p>
-										<label
-											className="
+											>
+												{userProfile.credentials.email}
+											</p>
+											<label
+												className="
                       absolute left-4 -top-2 z-20
                       text-light-gray text-xs 
                       transition-all
                       2xl:text-xs
                       "
-										>
-											Email
-										</label>
-										<div
-											className="
+											>
+												Email
+											</label>
+											<div
+												className="
                         absolute 
                         z-10
                         transition-all
@@ -239,9 +239,9 @@ export default function Profile() {
                         rounded-full
                         bg-white 
                       "
-										/>
-									</fieldset>
-                  </div>
+											/>
+										</fieldset>
+									</div>
 									<div className="w-full flex items-center flex-row justify-between">
 										<fieldset className="relative w-[48%] my-2 lg:mt-4 lg:w-[49%]">
 											<p
@@ -387,8 +387,12 @@ export default function Profile() {
 									</div>
 								</div>
 								<div className="w-full h-[24%] rounded-2xl bg-base-green text-center p-2">
-									<p className="text-xs text-white lg:text-base">Mais informações</p>
-									<p className="text-xs text-white lg:text-base">{userProfile.informations}</p>
+									<p className="text-xs text-white lg:text-base">
+										Mais informações
+									</p>
+									<p className="text-xs text-white lg:text-base">
+										{userProfile.informations}
+									</p>
 								</div>
 							</div>
 						</div>

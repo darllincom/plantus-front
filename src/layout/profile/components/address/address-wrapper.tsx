@@ -7,13 +7,9 @@ type AddressWrapperProps = {
 };
 
 export default function AddressWrapper({ address }: AddressWrapperProps) {
-  return (
-    <>
-      { address ? (
-        <AddressInfo address={address} />
-      ) : (
-        <NoInfo name='Endereço' />
-      )}
-    </>
-  )
+	return (
+		<>
+			{address ? <AddressInfo address={address} /> : <NoInfo name="Endereço" />}
+		</>
+	);
 }

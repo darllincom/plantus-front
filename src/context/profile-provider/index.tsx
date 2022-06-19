@@ -1,30 +1,30 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
 type ContextType = {
-  isEdition: boolean
-  handleEdition: () => void
-}
+	isEdition: boolean;
+	handleEdition: () => void;
+};
 
 type ProfileProps = {
-  children: ReactNode
-}
+	children: ReactNode;
+};
 
-const ProfileContext = createContext<Partial<ContextType>>({})
+const ProfileContext = createContext<Partial<ContextType>>({});
 
 function ProfileProvider({ children }: ProfileProps) {
-  const [ isEdition, setEdition ] = useState(false)
+	const [isEdition, setEdition] = useState(false);
 
-  function handleEdition() {
-    setEdition(!isEdition)
-  }
+	function handleEdition() {
+		setEdition(!isEdition);
+	}
 
-  useEffect(() => {}, [])
+	useEffect(() => {}, []);
 
-  return (
-    <ProfileContext.Provider value={{ isEdition, handleEdition }}>
-      { children }
-    </ProfileContext.Provider>
-  )
+	return (
+		<ProfileContext.Provider value={{ isEdition, handleEdition }}>
+			{children}
+		</ProfileContext.Provider>
+	);
 }
 
-export { ProfileContext, ProfileProvider }
+export { ProfileContext, ProfileProvider };

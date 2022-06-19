@@ -1,13 +1,13 @@
-import { Health as HealthModel } from "../../../../models/health"
+import { Health as HealthModel } from '../../../../models/health';
 
 type HealthInfoProps = {
-  health: HealthModel
-}
+	health: HealthModel;
+};
 
 export default function HealthInfo({ health }: HealthInfoProps) {
-  return (
-    <>
-      <div className="w-full"></div>
-    </>
-  )
+	return (
+		<>
+			<div className="w-full"></div>
+		</>
+	);
 }

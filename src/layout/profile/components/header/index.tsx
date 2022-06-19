@@ -14,11 +14,11 @@ export default function Header() {
 					Perfil do Usuário
 				</h1>
 			</div>
-      {user?.office === 'MASTER' || user?.office === 'RH' ? (
-					<HeaderWrapper />
-				) : (
-					''
-				)}
+			{user?.office === 'MASTER' || user?.office === 'RH' ? (
+				<HeaderWrapper />
+			) : (
+				''
+			)}
 		</header>
 	);
 }
