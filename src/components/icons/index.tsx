@@ -1,7 +1,9 @@
+import File from './components/File';
 import Profile from './components/Profile';
 
 export enum IconNames {
-	PERFIL = 'perfil'
+	PERFIL = 'perfil',
+	FILE = 'file'
 }
 
 type IconsProps = {
@@ -28,6 +30,8 @@ export default function Icons({ name, size, bg, selected }: IconsProps) {
 								)}
 							</>
 						);
+					case IconNames.FILE:
+						return <File size={size} />;
 				}
 			})()}
 		</>

@@ -1,8 +1,6 @@
-type ProfileProps = {
-	size: 'lg' | 'sm';
-};
+import { IconsProps } from './icons-props';
 
-export default function Profile({ size }: ProfileProps) {
+export default function Profile({ size }: IconsProps) {
 	return (
 		<>
 			{size === 'lg' ? (
