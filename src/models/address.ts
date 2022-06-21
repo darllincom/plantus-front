@@ -1,5 +1,5 @@
 export type Address = {
-	id: string;
+	id?: string;
 	streetName: string;
 	district: string;
 	addressNumber: string;
@@ -7,5 +7,5 @@ export type Address = {
 	state: string;
 	city: string;
 	complementOrReference: string;
-	residenceComprovant: string;
+	residenceComprovant?: string;
 };

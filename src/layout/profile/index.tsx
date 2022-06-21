@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../../components/loader';
-import { ProfileContext } from '../../context/profile-provider';
 import { User } from '../../models/user';
 import { UserRepository } from '../../repositories/user-repository';
 import Address from './components/address';
@@ -15,25 +14,58 @@ export default function Profile() {
 	const [leftBar, setLeftBar] = useState('0%');
 	const [selectedTab, setSelectedTab] = useState('address');
 
-	const { userProfile, isLoading } = useContext(ProfileContext);
+	const [userProfile, setUserProfile] = useState<User>({
+		birthDate: '',
+		cpf: '',
+		credentials: {
+			email: ''
+		},
+		dateStarted: '',
+		fullName: '',
+		gender: '',
+		hasRegisteringPending: true,
+		id: '',
+		image: '',
+		informations: '',
+		occupation: '',
+		office: '',
+		phone: '',
+		whatsapp: ''
+	});
+	const [isLoading, setLoading] = useState(true);
+
+	const { id } = useParams();
+
+	async function handleFetchUserByID(userID: string) {
+		const resp = await UserRepository.fetchProfile(userID);
+
+		setUserProfile(resp.data);
+	}
+
+	useEffect(() => {
+		setLoading(true);
+		handleFetchUserByID(id!);
+
+		setLoading(false);
+	}, [id]);
 
 	function moveBarTo(tab: 'address' | 'health' | 'professional' | 'documents') {
 		switch (tab) {
 			case 'address':
 				setSelectedTab('address');
-				setLeftBar('0');
+				setLeftBar('0%');
 				break;
 			case 'health':
 				setSelectedTab('health');
-				setLeftBar('1/4');
+				setLeftBar('25%');
 				break;
 			case 'professional':
 				setSelectedTab('professional');
-				setLeftBar('2/4');
+				setLeftBar('50%');
 				break;
 			case 'documents':
 				setSelectedTab('documents');
-				setLeftBar('3/4');
+				setLeftBar('75%');
 				break;
 		}
 	}
@@ -47,7 +79,7 @@ export default function Profile() {
 				<Loader />
 			) : (
 				<>
-					<UserDetails user={userProfile!} />
+					<UserDetails user={userProfile} />
 					<nav className="w-full mt-4 relative">
 						<ul className="w-full flex items-center justify-around">
 							<li
@@ -77,7 +109,8 @@ export default function Profile() {
 						</ul>
 						<div className="w-full h-2 shadow bg-light-gray relative rounded-full transition-all duration-500">
 							<div
-								className={`w-[25%] h-2 absolute bg-base-green left-${leftBar} rounded-full transition-all duration-500`}
+								style={{ left: `${leftBar}` }}
+								className={`w-[25%] h-2 absolute bg-base-green rounded-full transition-all duration-500`}
 							></div>
 						</div>
 					</nav>
@@ -85,15 +118,15 @@ export default function Profile() {
 						{(() => {
 							switch (selectedTab) {
 								case 'address':
-									return <Address address={userProfile!.address} />;
+									return <Address address={userProfile?.address} />;
 								case 'health':
-									return <Health health={userProfile!.health} />;
+									return <Health health={userProfile?.health} />;
 								case 'professional':
 									return (
-										<Professional professional={userProfile!.professional} />
+										<Professional professional={userProfile?.professional} />
 									);
 								case 'documents':
-									return <Documents documents={userProfile!.documents} />;
+									return <Documents documents={userProfile?.documents} />;
 							}
 						})()}
 					</section>
