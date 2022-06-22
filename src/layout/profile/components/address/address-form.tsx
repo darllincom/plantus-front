@@ -3,13 +3,13 @@ import { FormEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserRepository } from '../../../../repositories/user-repository';
 import Icons, { IconNames } from '../../../../components/icons';
+import maskedCep from '../../../../utils/cepMask';
 
 type AddressFormProps = {
 	address?: AddressModel;
 };
 
 export default function AddressForm({ address }: AddressFormProps) {
-	const [addressToSubmit, setAddress] = useState<AddressModel>();
 	const [streetName, setStreetName] = useState('');
 	const [addressNumber, setAddressNumber] = useState('');
 	const [CEP, setCEP] = useState('');
@@ -24,13 +24,6 @@ export default function AddressForm({ address }: AddressFormProps) {
 	const [comprovant, setComprovant] = useState<File>();
 
 	const { id } = useParams();
-
-	const maskedCep = (v: string) => {
-		return v
-			.replace(/\D/g, '')
-			.replace(/^(\d{2})(\d{3})/g, '$1.$2')
-			.replace(/(\d{3})(\d{3})+?$/, '$1-$2');
-	};
 
 	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
@@ -67,7 +60,6 @@ export default function AddressForm({ address }: AddressFormProps) {
 	}
 
 	useEffect(() => {
-		console.log(address);
 		if (address) {
 			setStreetName(address!.streetName);
 			setAddressNumber(address!.addressNumber);

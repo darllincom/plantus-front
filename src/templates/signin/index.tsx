@@ -3,6 +3,7 @@ import { LoginContext } from '../../context/auth-provider';
 import Loader from '../../components/loader';
 import Login from '../../layout/login';
 import Divider from '../../components/divider';
+import Plantus from '../../assets/plantus.png';
 
 export default function SignIn() {
 	const { loading } = useContext(LoginContext);
@@ -15,7 +16,9 @@ export default function SignIn() {
 			<main className="z-10 w-1/2 h-screen bg-white transition-all">
 				{loading ? <Loader /> : <Login />}
 			</main>
-			<aside className="bg-dark-white w-1/2 h-screen"></aside>
+			<aside className="bg-dark-white relative overflow-hidden w-1/2 h-screen">
+				<img src={Plantus} className="absolute z-10 -right-[5%] w-7/8" />
+			</aside>
 		</div>
 	);
 }

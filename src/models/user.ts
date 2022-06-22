@@ -5,7 +5,7 @@ import { Health } from './health';
 import { Professional } from './professional';
 
 export type User = {
-	id: string;
+	id?: string;
 	fullName: string;
 	birthDate: string;
 	cpf: string;
@@ -16,7 +16,7 @@ export type User = {
 	office: string;
 	informations: string;
 	gender: string;
-	image: string;
+	image?: string;
 	hasRegisteringPending: boolean;
 	credentials: Credentials;
 	address?: Address;

@@ -9,10 +9,14 @@ export default function UserCard({ user }: UserCardProps) {
 		<div className="h-full w-52 lg:w-[25%] rounded-2xl bg-dark-green flex items-center content-start justify-start flex-col py-4">
 			<div className="relative">
 				<img
-					src={user.image}
+					src={
+						user.image !== ''
+							? user.image
+							: 'http://www.clker.com/cliparts/f/a/0/c/1434020125875430376profile.png'
+					}
 					alt="Imagem do usuário"
 					loading="lazy"
-					className="rounded-full w-20 border-2 mt-3 border-white bg-white lg:w-32"
+					className="rounded-full w-20 h-32 border-2 mt-3 border-white bg-white lg:w-32"
 				/>
 				<div className="absolute bottom-0 -right-2 w-5 h-5 rounded-full bg-white border-light-green border-2">
 					{user.hasRegisteringPending ? (

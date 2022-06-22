@@ -16,7 +16,11 @@ export default function ContentBar() {
 			<header className="flex w-full items-center justify-around">
 				<img
 					className="rounded-full w-10 xl:w-14"
-					src={user?.image}
+					src={
+						user?.image !== ''
+							? user?.image
+							: 'http://www.clker.com/cliparts/f/a/0/c/1434020125875430376profile.png'
+					}
 					alt="Avatar do Usuário"
 				/>
 				<section>

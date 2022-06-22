@@ -65,7 +65,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
                       lg:px-5
                       lg:text-base"
 							>
-								{new Date(user.birthDate).toLocaleDateString()}
+								{new Date(user.birthDate).toLocaleDateString('pt-BR')}
 							</p>
 							<label
 								className="
@@ -214,7 +214,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
                       lg:px-5
                       lg:text-base"
 							>
-								{new Date(user.dateStarted).toLocaleDateString()}
+								{new Date(user.dateStarted).toLocaleDateString('pt-BR')}
 							</p>
 							<label
 								className="
@@ -272,7 +272,9 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 				</div>
 				<div className="w-full h-[24%] rounded-2xl bg-base-green text-center p-2">
 					<p className="text-xs text-white lg:text-base">Mais informações</p>
-					<p className="text-xs text-white lg:text-base">{user.informations}</p>
+					<p className="text-xs text-white lg:text-base text-left">
+						{user.informations}
+					</p>
 				</div>
 			</div>
 		</>
