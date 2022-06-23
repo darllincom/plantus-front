@@ -34,3 +34,4 @@ jobs:
         heroku_email: contato@darllin.com
         heroku_app_name: dev-plantus-frontend-rev
         branch: development
+        buildpack: true
