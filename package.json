@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "vite --port $PORT",
 		"build": "tsc && vite build",
-		"preview": "vite preview",
+		"preview": "vite preview --port $8080",
 		"format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
 		"lint": "eslint ./",
 		"lintFix": "eslint ./ --fix",
