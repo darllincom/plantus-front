@@ -6,7 +6,7 @@ type NoInfoProps = {
 };
 
 export default function NoInfo({ name }: NoInfoProps) {
-	const { handleEdition } = useContext(ProfileContext);
+	// const { handleEdition } = useContext(ProfileContext);
 
 	return (
 		<div className="w-full h-full flex items-center content-center justify-items-center justify-center flex-col">
