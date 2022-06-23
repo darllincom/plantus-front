@@ -1,1 +1,1 @@
-web: yarn preview
+web: npm start
