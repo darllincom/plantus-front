@@ -15,6 +15,8 @@ export default function UserCardForm({ user }: UserDetailsProps) {
 	const [image, setImage] = useState<File>();
 	const [imageUrl, setImageUrl] = useState('');
 
+  const [ imagePreview, setImagePreview ] = useState('')
+
 	const { id } = useParams();
 
 	async function handleFetchOffices() {
@@ -22,6 +24,12 @@ export default function UserCardForm({ user }: UserDetailsProps) {
 
 		setOffices(res.data);
 	}
+
+  useEffect(() => {
+    if (image) {
+      setImagePreview(window.URL.createObjectURL(image))
+    }
+  }, [ image ])
 
 	useEffect(() => {
 		setOffice(user.office);
@@ -43,8 +51,6 @@ export default function UserCardForm({ user }: UserDetailsProps) {
 			},
 			image ? image : imageUrl
 		);
-
-		console.log(res);
 	}
 
 	return (
@@ -57,19 +63,20 @@ export default function UserCardForm({ user }: UserDetailsProps) {
 					<div className="relative">
 						<img
 							src={
-								imageUrl !== ''
-									? imageUrl
-									: 'http://www.clker.com/cliparts/f/a/0/c/1434020125875430376profile.png'
+								imagePreview !== ''
+									? imagePreview
+									: imageUrl
 							}
 							alt="Imagem do usuário"
 							loading="lazy"
 							className="rounded-full w-20 h-32 border-2 mt-3 border-white bg-white lg:w-32"
 						/>
-						<div className="absolute top-3 w-32 h-32 rounded-full bg-white/20 flex items-center justify-center content-center flex-col">
+						<div className="absolute top-3 w-32 h-32 rounded-full bg-white/50 flex items-center justify-center content-center flex-col">
 							<input
 								type="file"
+                accept='image/*'
 								onChange={(e) => setImage(e.currentTarget.files![0])}
-								className="text-xs h-full rounded-full flex flex-col w-full opacity-0 absolute"
+								className="text-xs h-full rounded-full flex flex-col w-full opacity-0 absolute cursor-pointer"
 							/>
 							<div className="w-16 h-16 bg-white rounded-full flex items-center justify-center content-center flex-col">
 								<svg
