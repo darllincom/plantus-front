@@ -11,13 +11,13 @@ export default function SignIn() {
 	document.title = 'Plantus | Login';
 
 	return (
-		<div className="container relative bg-dark-white max-w-none mx-auto w-screen h-screen flex justify-between items-center content-center flex-row">
+		<div className="container relative bg-dark-white max-w-none mx-auto w-full h-screen flex justify-between items-center content-center flex-row">
 			<Divider />
 			<main className="z-10 w-1/2 h-screen bg-white transition-all">
 				{loading ? <Loader /> : <Login />}
 			</main>
 			<aside className="bg-dark-white relative overflow-hidden w-1/2 h-screen">
-				<img src={Plantus} className="absolute z-10 -right-[5%] w-7/8" />
+				<img src={Plantus} className="absolute z-10 right-0 top-[15%] w-5/6" />
 			</aside>
 		</div>
 	);

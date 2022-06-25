@@ -17,7 +17,7 @@ export default function LoginForm() {
 
 	return (
 		<form className="mt-5" onSubmit={handleSubmit}>
-			<fieldset className="relative w-full my-4 2xl:mt-8">
+			<fieldset className="relative w-full my-4 xl:mt-4">
 				<input
 					type="text"
 					id="cpf-login"
@@ -33,8 +33,8 @@ export default function LoginForm() {
             py-2 px-3 outline-base-green
             placeholder-transparent
             peer
-            lg:py-3
-            lg:px-5
+            lg:py-2
+            lg:px-3
             lg:text-2xl
           "
 				/>
@@ -52,10 +52,10 @@ export default function LoginForm() {
           peer-focus:left-4
           peer-focus:text-base
           peer-focus:text-light-gray
-          lg:peer-placeholder-shown:top-4
+          lg:peer-placeholder-shown:top-3
           lg:peer-placeholder-shown:text-2xl
           lg:peer-focus:-top-3
-          lg:text-xl
+          lg:text-lg
           lg:peer-focus:text-lg
         "
 				>
@@ -95,7 +95,7 @@ export default function LoginForm() {
             py-2 px-3 outline-base-green
             placeholder-transparent
             peer
-            lg:py-3
+            lg:py-2
             lg:px-5
             lg:text-2xl
           "
@@ -114,10 +114,10 @@ export default function LoginForm() {
           peer-focus:left-4
           peer-focus:text-base
           peer-focus:text-light-gray
-          lg:peer-placeholder-shown:top-4
+          lg:peer-placeholder-shown:top-3
           lg:peer-placeholder-shown:text-2xl
           lg:peer-focus:-top-3
-          lg:text-xl
+          lg:text-lg
           lg:peer-focus:text-lg
           "
 				>
@@ -146,7 +146,7 @@ export default function LoginForm() {
 			) : (
 				''
 			)}
-			<div className="flex w-full justify-between items-center content-center xl:mt-10">
+			<div className="flex w-full justify-between items-center content-center xl:mt-5">
 				<Link to="/esqueci" className="text-dark-green font-bold xl:text-xl">
 					Esqueci a senha
 				</Link>

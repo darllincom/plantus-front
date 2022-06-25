@@ -4,7 +4,7 @@ import LoginHeader from './components/login-header';
 
 export default function Login() {
 	return (
-		<div className="wrapper ml-20 xl:ml-28">
+		<div className="wrapper ml-20 xl:ml-28 relative h-5/6">
 			<LoginHeader />
 			<LoginForm />
 			<LoginFooter />
