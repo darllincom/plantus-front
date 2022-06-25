@@ -61,7 +61,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 
 	return (
 		<>
-			<div className="h-full w-[22rem] lg:w-[73%] ">
+			<div className="h-full w-[22rem] lg:w-[70%] ">
 				<form
 					onSubmit={handleSubmit}
 					className="h-full w-full flex flex-col items-center justify-between"
@@ -320,13 +320,13 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 									value={hasRegisteringPending as unknown as string}
 									onChange={(e) => setHasRegisterPending(e.target.checked)}
 								/>
-								<p className="text-[0.65rem] lg:text-lg">
+								<p className="text-[0.65rem] lg:text-base">
 									Não possui pendência de cadastro
 								</p>
 							</fieldset>
 						</div>
 					</div>
-					<div className="w-full h-[24%] rounded-2xl bg-base-green text-center p-2">
+					<div className="w-full h-[30%] mt-6 rounded-2xl bg-base-green text-center p-2">
 						<p className="text-xs text-white lg:text-base">Mais informações</p>
 						<textarea
 							value={informations}

@@ -13,11 +13,12 @@ export default function Address({ address }: AddressProps) {
 
 	return (
 		<div className="w-full min-h-[15vh]">
-			{isEdition ? (
+			{/* {isEdition ? (
 				<AddressForm address={address} />
 			) : (
 				<AddressWrapper address={address} />
-			)}
+			)} */}
+      <AddressWrapper address={address} />
 		</div>
 	);
 }

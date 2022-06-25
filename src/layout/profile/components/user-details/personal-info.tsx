@@ -8,7 +8,7 @@ type UserDetailsProps = {
 export default function PersonalInfo({ user }: UserDetailsProps) {
 	return (
 		<>
-			<div className="h-full w-[22rem] lg:w-[73%] flex flex-col items-center justify-between">
+			<div className="h-full w-[22rem] lg:w-[70%] flex flex-col items-center justify-between">
 				<div className="w-full h-[70%] p-3 rounded-2xl bg-white shadow-sm">
 					<div className="w-full flex items-center">
 						<Icons name={IconNames.PERFIL} size="sm" bg />
@@ -16,7 +16,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 							Informações Pessoais
 						</p>
 					</div>
-					<fieldset className="relative w-full my-1 lg:mt-4">
+					<fieldset className="relative w-full my-1 lg:mt-[2.5%]">
 						<p
 							className=" 
                       border-light-green 
@@ -53,7 +53,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 						/>
 					</fieldset>
 					<div className="w-100 flex items-center flex-col lg:flex-row">
-						<fieldset className="relative w-full my-2 lg:mt-4 lg:w-[48%] lg:mr-4">
+						<fieldset className="relative w-full my-2 lg:mt-[2.5%] lg:w-[48%] lg:mr-4">
 							<p
 								className=" 
                       border-light-green 
@@ -89,7 +89,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
                       "
 							/>
 						</fieldset>
-						<fieldset className="relative w-full my-2 lg:mt-4">
+						<fieldset className="relative w-full my-2 lg:mt-[2.5%]">
 							<p
 								className=" 
                       border-light-green 
@@ -127,7 +127,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 						</fieldset>
 					</div>
 					<div className="w-full flex items-center flex-row justify-between">
-						<fieldset className="relative w-[48%] my-2 lg:mt-4 lg:w-[49%]">
+						<fieldset className="relative w-[48%] my-2 lg:mt-[2.5%] lg:w-[49%]">
 							<p
 								className=" 
                         border-light-green 
@@ -164,7 +164,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 							/>
 						</fieldset>
 
-						<fieldset className="relative w-[48%] my-2 lg:mt-4 lg:w-[49%]">
+						<fieldset className="relative w-[48%] my-2 lg:mt-[2.5%] lg:w-[49%]">
 							<p
 								className=" 
                         border-light-green 
@@ -202,7 +202,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 						</fieldset>
 					</div>
 					<div className="w-full flex items-center justify-between">
-						<fieldset className="relative w-[45%] my-2 lg:mt-4">
+						<fieldset className="relative w-[45%] my-2 lg:mt-[2.5%]">
 							<p
 								className=" 
                         border-light-green 
@@ -264,13 +264,13 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 									</svg>
 								)}
 							</div>
-							<p className="text-[0.65rem] lg:text-lg">
+							<p className="text-[0.65rem] lg:text-base">
 								Não possui pendência de cadastro
 							</p>
 						</fieldset>
 					</div>
 				</div>
-				<div className="w-full h-[24%] rounded-2xl bg-base-green text-center p-2">
+				<div className="w-full h-[30%] lg:mt-5 rounded-2xl bg-base-green text-center p-2">
 					<p className="text-xs text-white lg:text-base">Mais informações</p>
 					<p className="text-xs text-white lg:text-base text-left">
 						{user.informations}

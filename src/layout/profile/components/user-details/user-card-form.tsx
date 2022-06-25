@@ -55,7 +55,7 @@ export default function UserCardForm({ user }: UserDetailsProps) {
 
 	return (
 		<>
-			<div className="h-full w-52 lg:w-[25%] rounded-2xl bg-dark-green py-4">
+			<div className="h-full w-52 rounded-2xl bg-dark-green py-4 lg:w-[30%] lg:mr-5 lg:py-6 lg:px-9">
 				<form
 					onSubmit={handleSubmit}
 					className="h-full w-full flex items-center content-start justify-start flex-col "
@@ -131,10 +131,10 @@ export default function UserCardForm({ user }: UserDetailsProps) {
 					<select
 						value={office}
 						onChange={(e) => setOffice(e.target.value)}
-						className="w-10/12 py-1 px-10 my-5 rounded-full text-sm lg:text-lg lg:px-14"
+						className="w-full py-1 px-10 my-5 rounded-full text-sm lg:text-lg lg:text-center"
 					>
 						{offices.map((off, index) => (
-							<option value={off} key={index}>
+							<option className='text-center' value={off} key={index}>
 								{off}
 							</option>
 						))}
@@ -143,7 +143,7 @@ export default function UserCardForm({ user }: UserDetailsProps) {
 						type="text"
 						value={occupation}
 						onChange={(e) => setOccupation(e.target.value)}
-						className="py-1 bg-base-green  text-white rounded-full w-10/12 lg:px-14"
+						className="py-1 bg-base-green  text-white rounded-full w-full lg:text-center"
 					/>
 					<div className="w-full flex justify-end px-4">
 						<button

@@ -47,7 +47,7 @@ export default function Profile() {
 		handleFetchUserByID(id!);
 
 		setLoading(false);
-	}, [id, userProfile]);
+	}, [id]);
 
 	function moveBarTo(tab: 'address' | 'health' | 'professional' | 'documents') {
 		switch (tab) {
