@@ -12,7 +12,7 @@ export default function Sidebar() {
 			className="
         z-50 top-0 fixed left-0 h-screen w-40 
         flex items-center justify-start content-center flex-col px-4 bg-dark-white
-        xl:w-2/12
+        lg:w-[10%]
       "
 		>
 			<div className="flex items-start flex-col content-center justify-center mt-12">

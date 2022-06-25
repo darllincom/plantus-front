@@ -14,7 +14,7 @@ export default function UserDetails({ user }: UserDetailsProps) {
 	const { isEdition } = useContext(ProfileContext);
 
 	return (
-		<section className="w-full lg:h-[45vh]">
+		<section className="w-full lg:h-[65vh]">
 			<div className="w-full h-[23rem] lg:h-[100%] p-2 flex align-baseline flex-row items-center justify-between">
 				{isEdition ? (
 					<>

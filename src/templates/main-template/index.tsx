@@ -17,7 +17,7 @@ export default function MainTemplate() {
       "
 		>
 			<Sidebar />
-			<main className="container fixed right-0 h-screen flex flex-row justify-between w-5/6 max-w-none xl:w-10/12">
+			<main className="container fixed right-0 h-screen flex flex-row justify-between w-5/6 max-w-none lg:w-[90%]">
 				<section className="w-9/12 px-6 overflow-auto">
 					<Routes>
 						<Route path="" element={<Welcome />} />
