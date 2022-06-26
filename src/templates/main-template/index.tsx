@@ -5,6 +5,7 @@ import ContentBar from '../../components/content-bar';
 import Profile from '../../layout/profile';
 import { Route, Routes } from 'react-router-dom';
 import { ProfileProvider } from '../../context/profile-provider';
+import Team from '../../layout/team';
 
 export default function MainTemplate() {
 	return (
@@ -29,6 +30,7 @@ export default function MainTemplate() {
 								</ProfileProvider>
 							}
 						/>
+            <Route path='/equipe' element={<Team />} />
 					</Routes>
 				</section>
 				<ContentBar />
