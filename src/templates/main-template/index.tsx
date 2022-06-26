@@ -6,6 +6,7 @@ import Profile from '../../layout/profile';
 import { Route, Routes } from 'react-router-dom';
 import { ProfileProvider } from '../../context/profile-provider';
 import Team from '../../layout/team';
+import CreateUser from '../../layout/create-user';
 
 export default function MainTemplate() {
 	return (
@@ -30,6 +31,7 @@ export default function MainTemplate() {
 								</ProfileProvider>
 							}
 						/>
+            <Route path='/perfil/adicionar' element={<CreateUser />} />
             <Route path='/equipe' element={<Team />} />
 					</Routes>
 				</section>
