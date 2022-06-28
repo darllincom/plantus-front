@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../../components/loader';
+import { ProfileContext } from '../../context/profile-provider';
 import { User } from '../../models/user';
 import { UserRepository } from '../../repositories/user-repository';
 import Address from './components/address';
@@ -17,6 +18,7 @@ export default function Profile() {
 	const [userProfile, setUserProfile] = useState<User>();
 
 	const { id } = useParams();
+  const { isEdition } = useContext(ProfileContext)
 
 	useEffect(() => {
     async function handleFetchUserByID(userID: string) {
@@ -26,7 +28,7 @@ export default function Profile() {
     }
 
 		handleFetchUserByID(id!);
-	}, [id!]);
+	}, [id!, isEdition!]);
 
 	function moveBarTo(tab: 'address' | 'health' | 'professional' | 'documents') {
 		switch (tab) {

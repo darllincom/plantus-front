@@ -1,6 +1,8 @@
-import { FormEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { AxiosError } from 'axios';
+import { FormEvent, useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Icons, { IconNames } from '../../../../components/icons';
+import { ProfileContext } from '../../../../context/profile-provider';
 import { User } from '../../../../models/user';
 import { UserRepository } from '../../../../repositories/user-repository';
 import dateMask from '../../../../utils/dateMask';
@@ -21,7 +23,10 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 
 	const [birthDate, setBirthDate] = useState('');
 
+  const { handleEdition, handleLoading } = useContext(ProfileContext)
+
 	const { id } = useParams();
+  const navigate = useNavigate()
 
 	useEffect(() => {
 		setFullName(user.fullName);
@@ -38,22 +43,33 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
 
-		const res = await UserRepository.updatePersonalInfo(id!, {
-			fullName,
-			birthDate,
-			credentials: {
-				email
-			},
-			phone,
-			whatsapp,
-			dateStarted,
-			informations,
-			hasRegisteringPending
-		});
+    handleLoading!()
 
-		if (res.status === 200) {
-			document.location.reload();
-		}
+    try {
+      await UserRepository.updatePersonalInfo(id!, {
+        fullName,
+        birthDate,
+        credentials: {
+          email
+        },
+        phone,
+        whatsapp,
+        dateStarted,
+        informations,
+        hasRegisteringPending
+      });
+
+      navigate(`/perfil/${user.id}`, { replace: true })
+      handleEdition!()
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        if (error.code === 'Internal Server Error') {
+          alert('Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível')
+        }
+      }
+    }
+
+    handleLoading!()
 	}
 
 	return (
