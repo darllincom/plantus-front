@@ -17,7 +17,7 @@ export type User = {
 	informations: string;
 	gender: string;
 	image?: string;
-	hasRegisteringPending: boolean;
+	hasRegisteringPending: string;
 	credentials: Credentials;
 	address?: Address;
 	health?: Health;

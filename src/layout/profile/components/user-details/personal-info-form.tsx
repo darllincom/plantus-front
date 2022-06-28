@@ -18,7 +18,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 	const [phone, setPhone] = useState('');
 	const [whatsapp, setWhatsapp] = useState('');
 	const [dateStarted, setDateStarted] = useState('');
-	const [hasRegisteringPending, setHasRegisterPending] = useState(true);
+	const [hasRegisteringPending, setHasRegisterPending] = useState('');
 	const [informations, setInfo] = useState('');
 
 	const [birthDate, setBirthDate] = useState('');
@@ -326,16 +326,35 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
                         "
 								/>
 							</fieldset>
-							<fieldset className="w-[52%] flex items-center content-center justify-between object-center flex-row lg:justify-around">
-								<input
-									type="checkbox"
-									className="w-5 h-5"
-									value={hasRegisteringPending as unknown as string}
-									onChange={(e) => setHasRegisterPending(e.target.checked)}
-								/>
-								<p className="text-[0.65rem] lg:text-sm">
-									Não possui pendência de cadastro
-								</p>
+							<fieldset className="w-[52%] flex items-start content-center justify-start object-center flex-col lg:justify-around">
+								<div className="w-full flex items-center justify-start">
+                  <input
+                    type="radio"
+                    name='registering-pending'
+                    className="w-5 h-5"
+                    value={"false"}
+                    onChange={(e) => {
+                      setHasRegisterPending(e.target.value)
+                    }}
+                  />
+                  <label className="text-[0.65rem] ml-2 lg:text-sm">
+                    Não possui pendência de cadastro
+                  </label>
+                </div>
+                <div className="w-full flex items-center justify-start mt-2">
+                  <input
+                    type="radio"
+                    name='registering-pending'
+                    className="w-5 h-5"
+                    value={"true"}
+                    onChange={(e) => {
+                      setHasRegisterPending(e.target.value)
+                    }}
+                  />
+                  <label className="text-[0.65rem] ml-2 lg:text-sm">
+                    Possui pendência de cadastro
+                  </label>
+                </div>
 							</fieldset>
 						</div>
 					</div>
