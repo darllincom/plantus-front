@@ -14,40 +14,19 @@ export default function Profile() {
 	const [leftBar, setLeftBar] = useState('0%');
 	const [selectedTab, setSelectedTab] = useState('address');
 
-	const [userProfile, setUserProfile] = useState<User>({
-		birthDate: '',
-		cpf: '',
-		credentials: {
-			email: ''
-		},
-		dateStarted: '',
-		fullName: '',
-		gender: '',
-		hasRegisteringPending: true,
-		id: '',
-		image: '',
-		informations: '',
-		occupation: '',
-		office: '',
-		phone: '',
-		whatsapp: ''
-	});
-	const [isLoading, setLoading] = useState(true);
+	const [userProfile, setUserProfile] = useState<User>();
 
 	const { id } = useParams();
 
-	async function handleFetchUserByID(userID: string) {
-		const resp = await UserRepository.fetchProfile(userID);
-
-		setUserProfile(resp.data);
-	}
-
 	useEffect(() => {
-		setLoading(true);
-		handleFetchUserByID(id!);
+    async function handleFetchUserByID(userID: string) {
+      const resp = await UserRepository.fetchProfile(userID);
 
-		setLoading(false);
-	}, []);
+      setUserProfile(resp.data);
+    }
+
+		handleFetchUserByID(id!);
+	}, [id!]);
 
 	function moveBarTo(tab: 'address' | 'health' | 'professional' | 'documents') {
 		switch (tab) {
@@ -75,11 +54,11 @@ export default function Profile() {
 	return (
 		<div className="relative w-full">
 			<Header />
-			{isLoading && userProfile ? (
+			{ userProfile === undefined ? (
 				<Loader />
 			) : (
 				<>
-					<UserDetails user={userProfile} />
+					<UserDetails user={userProfile!} />
 					<nav className="w-full mt-4 relative">
 						<ul className="w-full flex items-center justify-around">
 							<li
