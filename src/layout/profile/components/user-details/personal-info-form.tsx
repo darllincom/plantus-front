@@ -31,25 +31,22 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 		setInfo(user.informations);
 		setHasRegisterPending(user.hasRegisteringPending);
 
-		setDateStarted(user.dateStarted.split('/').reverse().join('/'));
-		setBirthDate(dateMask(user.birthDate.split('/').reverse().join('/')));
+		setDateStarted(user.dateStarted);
+		setBirthDate(dateMask(user.birthDate));
 	}, [user]);
 
 	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
 
-		const formatedBDay = birthDate.split('/').reverse().join('/');
-		const formatedStarted = dateStarted.split('/').reverse().join('/');
-
 		const res = await UserRepository.updatePersonalInfo(id!, {
 			fullName,
-			birthDate: formatedBDay,
+			birthDate,
 			credentials: {
 				email
 			},
 			phone,
 			whatsapp,
-			dateStarted: formatedStarted,
+			dateStarted,
 			informations,
 			hasRegisteringPending
 		});
@@ -119,7 +116,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 							/>
 						</fieldset>
 						<div className="w-100 flex items-center flex-col lg:flex-row">
-							<fieldset className="relative w-full my-2 lg:mt-4 lg:w-[48%] lg:mr-4">
+							<fieldset className="relative w-full my-2 lg:mt-4 lg:w-[38%] lg:mr-4">
 								<input
 									type="text"
 									maxLength={10}
@@ -320,7 +317,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 									value={hasRegisteringPending as unknown as string}
 									onChange={(e) => setHasRegisterPending(e.target.checked)}
 								/>
-								<p className="text-[0.65rem] lg:text-base">
+								<p className="text-[0.65rem] lg:text-sm">
 									Não possui pendência de cadastro
 								</p>
 							</fieldset>

@@ -6,7 +6,7 @@ type UserCardProps = {
 
 export default function UserCard({ user }: UserCardProps) {
 	return (
-		<div className="h-full w-52 rounded-2xl bg-dark-green flex items-center content-start justify-start flex-col py-4 lg:w-[30%] lg:mr-5 lg:py-6 lg:px-9">
+		<div className="h-full w-52 rounded-2xl bg-dark-green flex items-center content-start justify-start flex-col py-4 lg:w-[30%] lg:mr-5 lg:py-6 lg:px-6">
 			<div className="relative">
 				<img
 					src={
@@ -44,11 +44,11 @@ export default function UserCard({ user }: UserCardProps) {
 					)}
 				</div>
 			</div>
-			<p className="text-white text-lg mt-2">{user.fullName}</p>
-			<span className="bg-base-green text-white px-10 my-5 rounded-full text-sm lg:text-lg lg:w-full lg:text-center">
+			<p className="text-white text-lg text-center mt-2">{user.fullName}</p>
+			<span className="bg-base-green w-full text-white text-center my-2 rounded-full text-sm lg:text-lg lg:w-full">
 				{user.office}
 			</span>
-			<span className="bg-base-green text-white px-10 rounded-full text-sm lg:text-lg lg:w-full  lg:text-center">
+			<span className="bg-base-green w-full text-white text-center rounded-full text-sm lg:text-lg lg:w-full">
 				{user.occupation}
 			</span>
 		</div>

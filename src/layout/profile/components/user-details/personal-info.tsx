@@ -16,7 +16,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 							Informações Pessoais
 						</p>
 					</div>
-					<fieldset className="relative w-full my-1 lg:mt-[2.5%]">
+					<fieldset className="relative w-full my-1 lg:mt-4">
 						<p
 							className=" 
                       border-light-green 
@@ -53,7 +53,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 						/>
 					</fieldset>
 					<div className="w-100 flex items-center flex-col lg:flex-row">
-						<fieldset className="relative w-full my-2 lg:mt-[2.5%] lg:w-[48%] lg:mr-4">
+						<fieldset className="relative w-full my-2 lg:mt-4 lg:w-[38%] lg:mr-4">
 							<p
 								className=" 
                       border-light-green 
@@ -65,7 +65,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
                       lg:px-5
                       lg:text-base"
 							>
-								{new Date(user.birthDate).toLocaleDateString('pt-BR')}
+								{user.birthDate}
 							</p>
 							<label
 								className="
@@ -89,7 +89,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
                       "
 							/>
 						</fieldset>
-						<fieldset className="relative w-full my-2 lg:mt-[2.5%]">
+						<fieldset className="relative w-full my-2 lg:mt-4">
 							<p
 								className=" 
                       border-light-green 
@@ -127,7 +127,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 						</fieldset>
 					</div>
 					<div className="w-full flex items-center flex-row justify-between">
-						<fieldset className="relative w-[48%] my-2 lg:mt-[2.5%] lg:w-[49%]">
+						<fieldset className="relative w-[48%] my-2 lg:mt-4 lg:w-[49%]">
 							<p
 								className=" 
                         border-light-green 
@@ -164,7 +164,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 							/>
 						</fieldset>
 
-						<fieldset className="relative w-[48%] my-2 lg:mt-[2.5%] lg:w-[49%]">
+						<fieldset className="relative w-[48%] my-2 lg:mt-4 lg:w-[49%]">
 							<p
 								className=" 
                         border-light-green 
@@ -202,7 +202,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 						</fieldset>
 					</div>
 					<div className="w-full flex items-center justify-between">
-						<fieldset className="relative w-[45%] my-2 lg:mt-[2.5%]">
+						<fieldset className="relative w-[45%] my-2 lg:mt-4">
 							<p
 								className=" 
                         border-light-green 
@@ -214,7 +214,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
                       lg:px-5
                       lg:text-base"
 							>
-								{new Date(user.dateStarted).toLocaleDateString('pt-BR')}
+								{user.dateStarted}
 							</p>
 							<label
 								className="
@@ -264,7 +264,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 									</svg>
 								)}
 							</div>
-							<p className="text-[0.65rem] lg:text-base">
+							<p className="text-[0.65rem] lg:text-sm">
 								Não possui pendência de cadastro
 							</p>
 						</fieldset>
