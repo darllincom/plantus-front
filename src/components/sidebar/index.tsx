@@ -1,19 +1,50 @@
-import Logo from '../../assets/plantus-logo.png'
-import Grad from '../../assets/grad.png'
+import Logo from '../../assets/plantus-logo.png';
+import Grad from '../../assets/grad.png';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { LoginContext } from '../../context/auth-provider';
 
 export default function Sidebar() {
-  return (
-    <aside className="z-50 top-0 left-0 h-full w-52 flex items-center justify-start content-center flex-col px-8">
-      <div className="flex items-start flex-col content-center justify-center mt-12">
-				<img src={Logo} alt="Plantus Logo" className="w-32" />
-				<img src={Grad} alt="Gradiente" className="w-32 mt-2" />
+	const { user } = useContext(LoginContext);
+
+	return (
+		<aside
+			className="
+        z-50 top-0 fixed left-0 h-screen w-40 
+        flex items-center justify-start content-center flex-col px-4 bg-dark-white
+        lg:w-[10%]
+      "
+		>
+			<div className="flex items-start flex-col content-center justify-center mt-12">
+				<img src={Logo} alt="Plantus Logo" className="w-36 xl:w-40" />
+				<img src={Grad} alt="Gradiente" className="w-36 xl:w-40 mt-2 xl:mt-3" />
 			</div>
-      <div className="flex items-center justify-start content-center  flex-col w-full h-full mt-16">
-        <a href="" className="bg-white w-24 h-24 rounded-2xl text-center shadow-sm my-5">Inicio</a>
-        <a href="" className="bg-white w-24 h-24 rounded-2xl text-center shadow-sm my-5">Perfil</a>
-        <a href="" className="bg-white w-24 h-24 rounded-2xl text-center shadow-sm my-5">Equipe</a>
-        <a href="" className="bg-white w-24 h-24 rounded-2xl text-center shadow-sm my-5">Produtos</a>
-      </div>
-    </aside>
-  )
+			<div className="flex items-center justify-start content-center flex-col w-full h-full mt-5 xl:mt-8">
+				<Link
+					to="/"
+					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+				>
+					Inicio
+				</Link>
+				<Link
+					to={`/perfil/${user?.id}`}
+					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+				>
+					Perfil
+				</Link>
+				<Link
+					to="/equipe"
+					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+				>
+					Equipe
+				</Link>
+				<Link
+					to="/produtos"
+					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+				>
+					Produtos
+				</Link>
+			</div>
+		</aside>
+	);
 }

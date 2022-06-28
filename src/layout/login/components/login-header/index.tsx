@@ -1,18 +1,14 @@
-import Logo from '../../../../assets/plantus-logo.png'
-import Grad from '../../../../assets/grad.png'
+import PlantusHeader from '../../../../components/plantus-header';
 
 export default function LoginHeader() {
 	return (
 		<>
-			<div className="flex items-start flex-col content-center justify-center mt-20">
-				<img src={Logo} alt="Plantus Logo" className="w-90" />
-				<img src={Grad} alt="Gradiente" className="w-90 mt-5" />
-			</div>
-			<div className="welcome-wrapper mt-20">
-				<h1 className="text-3xl font-semibold text-dark-green">
+			<PlantusHeader />
+			<div className="welcome-wrapper mt-10 xl:mt-14">
+				<h1 className="text-xl font-semibold text-dark-green xl:text-4xl">
 					Bem-vindo à Plataforma Plantus
 				</h1>
-				<h3 className="text-xl text-light-gray">
+				<h3 className="text-md text-light-gray xl:text-2xl">
 					Por favor, insira as credenciais solicitadas
 				</h3>
 			</div>
