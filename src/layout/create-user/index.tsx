@@ -1,4 +1,6 @@
+import { AxiosError } from 'axios';
 import { FormEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/base';
 import Icons, { IconNames } from '../../components/icons';
 import { UserRepository } from '../../repositories/user-repository';
@@ -28,6 +30,8 @@ export default function CreateUser() {
 	);
 
 	const [offices, setOffices] = useState(['']);
+
+  const navigate = useNavigate()
 
 	useEffect(() => {
 		if (image) {
@@ -73,9 +77,16 @@ export default function CreateUser() {
 				}
 			});
 
-			console.log(resp);
+      alert('Deu certo! Usuário cadastrado com sucesso')
+      navigate(`/perfil/${resp.data.id}`)
 		} catch (error) {
-			console.log(error);
+      if (error instanceof AxiosError) {
+				if (error.code === 'Internal Server Error') {
+					alert(
+						'Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível'
+					);
+				}
+			}
 		}
 	}
 
