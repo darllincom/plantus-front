@@ -8,14 +8,14 @@ export type User = {
 	id?: string;
 	fullName: string;
 	birthDate: string;
-	cpf: string;
+	cpf?: string;
 	phone: string;
 	whatsapp: string;
 	dateStarted: string;
 	occupation: string;
 	office: string;
 	informations: string;
-	gender: string;
+	gender?: string;
 	image?: string;
 	hasRegisteringPending: string;
 	credentials: Credentials;

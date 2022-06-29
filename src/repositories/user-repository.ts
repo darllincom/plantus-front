@@ -15,19 +15,24 @@ export class UserRepository {
 		return res;
 	}
 
-	static async updatePersonalInfo(id: string, user: Partial<User>) {
-		const res = await api.patch(
+	static async updatePersonalInfo(id: string, user: User, imageFile: File | string) {
+		const formData = new FormData()
+
+    formData.append('fullName', user.fullName)
+    formData.append('birthDate', user.birthDate)
+    formData.append('email', user.credentials?.email)
+    formData.append('phone', user.phone)
+    formData.append('whatsapp', user.whatsapp)
+    formData.append('dateStarted', user.dateStarted)
+    formData.append('informations', user.informations)
+    formData.append('hasRegisteringPending', user.hasRegisteringPending)
+    formData.append('occupation', user.occupation)
+    formData.append('office', user.office)
+    formData.append('imageFile', imageFile)
+    
+    const res = await api.patch(
 			`users/${id}`,
-			{
-				fullName: user.fullName,
-				birthDate: user.birthDate,
-				email: user.credentials?.email,
-				phone: user.phone,
-				whatsapp: user.whatsapp,
-				dateStarted: user.dateStarted,
-				informations: user.informations,
-				hasRegisteringPending: user.hasRegisteringPending
-			},
+			formData,
 			{
 				headers: {
 					'Content-Type': 'multipart/form-data'
