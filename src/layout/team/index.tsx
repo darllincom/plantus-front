@@ -52,7 +52,7 @@ export default function Team() {
 									loading="lazy"
 									className="rounded-full border-2 border-slate-300 bg-white object-cover lg:h-20 lg:w-20"
 								/>
-								<p className="my-2 text-center">{member?.fullName}</p>
+								<p className="my-2 text-center">{member?.fullName.toUpperCase()}</p>
 								<span className="bg-base-green text-center text-white px-10 rounded-lg text-sm my-1 lg:text-base lg:w-full">
 									{member?.occupation}
 								</span>
