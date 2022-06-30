@@ -24,6 +24,8 @@ export default function Team() {
 		setLoading(false);
 	}, []);
 
+  document.title = 'Plantus | Equipe'
+
 	return (
 		<div className="relative w-full">
 			<Header />
@@ -34,11 +36,11 @@ export default function Team() {
 					{/* <div className="w-full my-8">
 						<input type="text" placeholder="Pesquisar por nome" />
 					</div> */}
-					<div className="w-full flex">
+					<div className="w-full flex flex-wrap justify-evenly mb-16">
 						{team?.map((member) => (
 							<div
 								key={member?.id}
-								className="w-64 p-5 flex items-center mr-3 justify-start flex-col bg-white shadow h-80 rounded-xl relative"
+								className="w-64 p-5 flex items-center mr-3 mt-5 justify-start flex-col bg-white shadow h-[24rem] rounded-xl relative"
 							>
 								<img
 									src={
@@ -48,7 +50,7 @@ export default function Team() {
 									}
 									alt="Imagem do usuário"
 									loading="lazy"
-									className="rounded-full border-2 border-slate-300 bg-white lg:w-20"
+									className="rounded-full border-2 border-slate-300 bg-white object-cover lg:h-20 lg:w-20"
 								/>
 								<p className="my-2 text-center">{member?.fullName}</p>
 								<span className="bg-base-green text-center text-white px-10 rounded-lg text-sm my-1 lg:text-base lg:w-full">
