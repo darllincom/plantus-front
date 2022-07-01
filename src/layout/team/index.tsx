@@ -36,11 +36,11 @@ export default function Team() {
 					{/* <div className="w-full my-8">
 						<input type="text" placeholder="Pesquisar por nome" />
 					</div> */}
-					<div className="w-full flex flex-wrap justify-evenly mb-16">
+					<div className="w-full items-start flex flex-wrap justify-between mb-16">
 						{team?.map((member) => (
 							<div
 								key={member?.id}
-								className="w-64 p-5 flex items-center mr-3 mt-5 justify-start flex-col bg-white shadow h-[24rem] rounded-xl relative"
+								className="w-64 p-5 flex items-center mx-3 mt-5 justify-start flex-col bg-white shadow h-[24rem] rounded-xl relative"
 							>
 								<img
 									src={
@@ -53,7 +53,7 @@ export default function Team() {
 									className="rounded-full border-2 border-slate-300 bg-white object-cover lg:h-20 lg:w-20"
 								/>
 								<p className="my-2 text-center">{member?.fullName.toUpperCase()}</p>
-								<span className="bg-base-green text-center text-white px-10 rounded-lg text-sm my-1 lg:text-base lg:w-full">
+								<span className="bg-base-green text-center text-white w-full rounded-lg text-sm my-1 lg:text-base lg:w-full">
 									{member?.occupation}
 								</span>
 								<div className="border-slate-500 text-center px-4 border rounded-lg text-sm my-1 lg:text-base w-full whitespace-nowrap">

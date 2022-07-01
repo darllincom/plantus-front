@@ -86,6 +86,7 @@ export default function CreateUser() {
 						'Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível'
 					);
 				}
+        alert(`Falha ao cadastrar um usuário. O(s) erro(s) é/foram: ${error.response?.data.message.map((mess: string) => mess )}`)
 			}
 		}
 	}
