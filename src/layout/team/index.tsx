@@ -36,11 +36,11 @@ export default function Team() {
 					{/* <div className="w-full my-8">
 						<input type="text" placeholder="Pesquisar por nome" />
 					</div> */}
-					<div className="w-full items-start flex flex-wrap justify-between mb-16">
+					<div className="w-full items-start flex flex-wrap justify-start mb-16">
 						{team?.map((member) => (
 							<div
 								key={member?.id}
-								className="w-64 p-5 flex items-center mx-3 mt-5 justify-start flex-col bg-white shadow h-[24rem] rounded-xl relative"
+								className="w-64 p-5 flex items-center mx-6 mt-5 justify-start flex-col bg-white shadow h-[24rem] rounded-xl relative"
 							>
 								<img
 									src={

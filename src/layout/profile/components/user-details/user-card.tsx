@@ -16,7 +16,7 @@ export default function UserCard({ user }: UserCardProps) {
 					}
 					alt="Imagem do usuário"
 					loading="lazy"
-					className="rounded-full w-20 h-32 border-2 mt-3 border-white bg-white lg:w-32"
+					className="rounded-full object-cover w-20 h-32 border-2 mt-3 border-white bg-white lg:w-32"
 				/>
 				<div className="absolute bottom-0 -right-2 w-5 h-5 rounded-full bg-white border-light-green border-2">
 					{user.hasRegisteringPending ? (
