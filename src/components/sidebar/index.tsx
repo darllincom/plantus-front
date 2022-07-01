@@ -1,11 +1,15 @@
 import Logo from '../../assets/plantus-logo.png';
 import Grad from '../../assets/grad.png';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { LoginContext } from '../../context/auth-provider';
+import Icons, { IconNames } from '../icons';
+
+type CurrentSelected = 'bemvindo' | 'perfil' | 'equipe' | 'produtos';
 
 export default function Sidebar() {
 	const { user } = useContext(LoginContext);
+	const [selected, setCurrentSelected] = useState<CurrentSelected>('bemvindo');
 
 	return (
 		<aside
@@ -22,28 +26,63 @@ export default function Sidebar() {
 			<div className="flex items-center justify-start content-center flex-col w-full h-full mt-5 xl:mt-8">
 				<Link
 					to="/"
-					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+					className={`
+           w-20 h-20 px-2 text-xs 
+           flex items-center align-center content-center 
+           justify-center flex-col rounded-2xl text-center 
+           border-dark-gray my-2 
+           xl:w-24 xl:h-24 xl:text-base transition-all duration-300
+           ${selected === 'bemvindo' ? `bg-white shadow-md ` : `bg-darkest-white shadow-inner`}
+           `}
+           onClick={() => setCurrentSelected('bemvindo')}
 				>
-					Inicio
+					<Icons name={IconNames.HOME} size={'sm'} selected={selected === 'bemvindo'} />
+					<span className="mt-2">Inicio</span>
 				</Link>
 				<Link
 					to={`/perfil/${user?.id}`}
-					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+					className={`
+          w-20 h-20 px-2 text-xs 
+          flex items-center align-center content-center 
+          justify-center flex-col rounded-2xl text-center 
+          shadow border-dark-gray my-2 
+          xl:w-24 xl:h-24 xl:text-base transition-all duration-300
+          ${selected === 'perfil' ? `bg-white shadow-md ` : `bg-darkest-white shadow-inner`}
+          `}
+          onClick={() => setCurrentSelected('perfil')}
 				>
-					Perfil
+          <Icons name={IconNames.PERFIL} size={'sm'} selected={selected === 'perfil'} />
+					<span className="mt-2">Perfil</span>
 				</Link>
 				<Link
 					to="/equipe"
-					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+					className={`
+          w-20 h-20 px-2 text-xs 
+          flex items-center align-center content-center 
+          justify-center flex-col rounded-2xl text-center 
+          shadow border-dark-gray my-2 
+          xl:w-24 xl:h-24 xl:text-base transition-all duration-300
+          ${selected === 'equipe' ? `bg-white shadow-md ` : `bg-darkest-white shadow-inner`}
+          `}
+          onClick={() => setCurrentSelected('equipe')}
 				>
-					Equipe
+          <Icons name={IconNames.EQUIPE} size={'sm'} selected={selected === 'equipe'} />
+					<span className="mt-2">Equipe</span>
 				</Link>
-				<Link
+				{/* <Link
 					to="/produtos"
-					className="bg-white w-20 h-20 px-2 text-xs flex align-center content-center justify-center flex-col rounded-2xl text-center shadow-sm my-2 xl:w-24 xl:h-24 xl:text-base"
+					className={`
+          w-20 h-20 px-2 text-xs 
+          flex items-center align-center content-center 
+          justify-center flex-col rounded-2xl text-center 
+          shadow border-dark-gray my-2 
+          xl:w-24 xl:h-24 xl:text-base transition-all duration-300
+          ${selected === 'produtos' ? `bg-white shadow-md ` : `bg-darkest-white shadow-inner`}
+          `}
+          onClick={() => setCurrentSelected('produtos')}
 				>
 					Produtos
-				</Link>
+				</Link> */}
 			</div>
 		</aside>
 	);

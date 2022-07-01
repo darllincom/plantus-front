@@ -11,7 +11,7 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 			<div className="h-full w-[22rem] lg:w-[70%] flex flex-col items-center justify-between">
 				<div className="w-full h-[70%] p-3 rounded-2xl bg-white shadow-sm">
 					<div className="w-full flex items-center">
-						<Icons name={IconNames.PERFIL} size="sm" bg />
+						<Icons name={IconNames.PERFIL} selected size="sm" bg />
 						<p className="text-xs text-dark-green font-semibold lg:text-lg lg:ml-5">
 							Informações Pessoais
 						</p>

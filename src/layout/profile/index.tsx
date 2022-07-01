@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../../components/loader';
+import { LoginContext } from '../../context/auth-provider';
 import { ProfileContext } from '../../context/profile-provider';
 import { User } from '../../models/user';
 import { UserRepository } from '../../repositories/user-repository';
@@ -18,14 +19,15 @@ export default function Profile() {
 	const [userProfile, setUserProfile] = useState<User>();
 
 	const { id } = useParams();
-  const { isEdition } = useContext(ProfileContext)
+	const { isEdition } = useContext(ProfileContext);
+	const { user } = useContext(LoginContext);
 
 	useEffect(() => {
-    async function handleFetchUserByID(userID: string) {
-      const resp = await UserRepository.fetchProfile(userID);
+		async function handleFetchUserByID(userID: string) {
+			const resp = await UserRepository.fetchProfile(userID);
 
-      setUserProfile(resp.data);
-    }
+			setUserProfile(resp.data);
+		}
 
 		handleFetchUserByID(id!);
 	}, [id!, isEdition!]);
@@ -56,7 +58,7 @@ export default function Profile() {
 	return (
 		<div className="relative w-full">
 			<Header />
-			{ userProfile === undefined ? (
+			{userProfile === undefined ? (
 				<Loader />
 			) : (
 				<>
@@ -95,22 +97,26 @@ export default function Profile() {
 							></div>
 						</div>
 					</nav>
-					<section className="w-full bg-white px-4 py-3 rounded-b-xl mb-14">
-						{(() => {
-							switch (selectedTab) {
-								case 'address':
-									return <Address address={userProfile?.address} />;
-								case 'health':
-									return <Health health={userProfile?.health} />;
-								case 'professional':
-									return (
-										<Professional professional={userProfile?.professional} />
-									);
-								case 'documents':
-									return <Documents documents={userProfile?.documents} />;
-							}
-						})()}
-					</section>
+					{user?.office === 'MASTER' || user?.office === 'RH ' ? (
+						<section className="w-full bg-white px-4 py-3 rounded-b-xl mb-14">
+							{(() => {
+								switch (selectedTab) {
+									case 'address':
+										return <Address address={userProfile?.address} />;
+									case 'health':
+										return <Health health={userProfile?.health} />;
+									case 'professional':
+										return (
+											<Professional professional={userProfile?.professional} />
+										);
+									case 'documents':
+										return <Documents documents={userProfile?.documents} />;
+								}
+							})()}
+						</section>
+					) : (
+						''
+					)}
 				</>
 			)}
 		</div>

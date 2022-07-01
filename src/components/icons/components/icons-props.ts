@@ -1,3 +1,3 @@
 export type IconsProps = {
-	size: 'lg' | 'sm';
+	size: 'xl' | 'lg' | 'sm';
 };
