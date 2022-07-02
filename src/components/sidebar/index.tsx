@@ -45,7 +45,7 @@ export default function Sidebar() {
           w-20 h-20 px-2 text-xs 
           flex items-center align-center content-center 
           justify-center flex-col rounded-2xl text-center 
-          shadow border-dark-gray my-2 
+          border-dark-gray my-2 
           xl:w-24 xl:h-24 xl:text-base transition-all duration-300
           ${selected === 'perfil' ? `bg-white shadow-md ` : `bg-darkest-white shadow-inner`}
           `}
@@ -60,7 +60,7 @@ export default function Sidebar() {
           w-20 h-20 px-2 text-xs 
           flex items-center align-center content-center 
           justify-center flex-col rounded-2xl text-center 
-          shadow border-dark-gray my-2 
+          border-dark-gray my-2 
           xl:w-24 xl:h-24 xl:text-base transition-all duration-300
           ${selected === 'equipe' ? `bg-white shadow-md ` : `bg-darkest-white shadow-inner`}
           `}

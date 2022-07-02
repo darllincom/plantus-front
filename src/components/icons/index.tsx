@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Edit from './components/Edit';
 import Home from './components/Home';
 import HomeSelected from './components/HomeSelected';
