@@ -124,7 +124,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 									src={imagePreview !== '' ? imagePreview : imageUrl}
 									alt="Imagem do usuário"
 									loading="lazy"
-									className="rounded-full w-20 h-32 border-2 mt-3 border-white bg-white lg:w-32"
+									className="rounded-full object-cover w-20 h-32 border-2 mt-3 border-white bg-white lg:w-32"
 								/>
 								<div className="absolute top-3 w-32 h-32 rounded-full bg-white/50 flex items-center justify-center content-center flex-col">
 									<input

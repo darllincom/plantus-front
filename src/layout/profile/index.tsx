@@ -40,11 +40,11 @@ export default function Profile() {
 				break;
 			case 'health':
 				setSelectedTab('health');
-				setLeftBar('25%');
+				setLeftBar('23%');
 				break;
 			case 'professional':
 				setSelectedTab('professional');
-				setLeftBar('50%');
+				setLeftBar('47%');
 				break;
 			case 'documents':
 				setSelectedTab('documents');
