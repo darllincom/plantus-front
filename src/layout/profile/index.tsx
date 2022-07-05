@@ -63,57 +63,62 @@ export default function Profile() {
 			) : (
 				<>
 					<UserDetails user={userProfile!} />
-					<nav className="w-full mt-4 relative">
-						<ul className="w-full flex items-center justify-around">
-							<li
-								onClick={() => moveBarTo('address')}
-								className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
-							>
-								<span>Endereço</span>
-							</li>
-							<li
-								onClick={() => moveBarTo('health')}
-								className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
-							>
-								<span>Saúde</span>
-							</li>
-							<li
-								onClick={() => moveBarTo('professional')}
-								className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
-							>
-								<span>Profissionais</span>
-							</li>
-							<li
-								onClick={() => moveBarTo('documents')}
-								className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
-							>
-								<span>Documentos</span>
-							</li>
-						</ul>
-						<div className="w-full h-2 shadow bg-light-gray relative rounded-full transition-all duration-500">
-							<div
-								style={{ left: `${leftBar}` }}
-								className={`w-[25%] h-2 absolute bg-base-green rounded-full transition-all duration-500`}
-							></div>
-						</div>
-					</nav>
 					{user?.office === 'MASTER' || user?.office === 'RH ' ? (
-						<section className="w-full bg-white px-4 py-3 rounded-b-xl mb-14">
-							{(() => {
-								switch (selectedTab) {
-									case 'address':
-										return <Address address={userProfile?.address} />;
-									case 'health':
-										return <Health health={userProfile?.health} />;
-									case 'professional':
-										return (
-											<Professional professional={userProfile?.professional} />
-										);
-									case 'documents':
-										return <Documents documents={userProfile?.documents} />;
-								}
-							})()}
-						</section>
+						<>
+							<nav className="w-full mt-4 relative">
+								<ul className="w-full flex items-center justify-around">
+									<li
+										onClick={() => moveBarTo('address')}
+										className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
+									>
+										<span>Endereço</span>
+									</li>
+									<li
+										onClick={() => moveBarTo('health')}
+										className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
+									>
+										<span>Saúde</span>
+									</li>
+									<li
+										onClick={() => moveBarTo('professional')}
+										className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
+									>
+										<span>Profissionais</span>
+									</li>
+									<li
+										onClick={() => moveBarTo('documents')}
+										className="text-xs text-dark-green font-semibold lg:text-base hover:cursor-pointer"
+									>
+										<span>Documentos</span>
+									</li>
+								</ul>
+								<div className="w-full h-2 shadow bg-light-gray relative rounded-full transition-all duration-500">
+									<div
+										style={{ left: `${leftBar}` }}
+										className={`w-[25%] h-2 absolute bg-base-green rounded-full transition-all duration-500`}
+									></div>
+								</div>
+							</nav>
+
+							<section className="w-full bg-white px-4 py-3 rounded-b-xl mb-14">
+								{(() => {
+									switch (selectedTab) {
+										case 'address':
+											return <Address address={userProfile?.address} />;
+										case 'health':
+											return <Health health={userProfile?.health} />;
+										case 'professional':
+											return (
+												<Professional
+													professional={userProfile?.professional}
+												/>
+											);
+										case 'documents':
+											return <Documents documents={userProfile?.documents} />;
+									}
+								})()}
+							</section>
+						</>
 					) : (
 						''
 					)}

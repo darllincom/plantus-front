@@ -118,7 +118,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 					className="h-full w-full flex flex-row items-start justify-start"
 				>
 					<div className="w-[30%] h-full mr-5 flex items-center content-start justify-start flex-col">
-						<div className="w-full h-[67%] bg-dark-green rounded-xl p-5 text-white flex items-center content-start justify-start flex-col shadow">
+						<div className="w-full h-[67%] bg-dark-green rounded-lg p-5 text-white flex items-center content-start justify-start flex-col shadow">
 							<div className="relative">
 								<img
 									src={imagePreview !== '' ? imagePreview : imageUrl}
@@ -145,11 +145,11 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 									)}
 								</div>
 							</div>
-							<h1 className="mt-4 text-center">{fullName}</h1>
+							<h1 className="mt-4 text-lg text-center">{fullName}</h1>
 							<select
 								value={office}
 								onChange={(e) => setOffice(e.target.value)}
-								className="w-full py-1 px-10 my-2 rounded-full text-sm bg-transparent text-white lg:text-lg lg:text-center"
+								className="w-full py-1 px-10 my-5 rounded-full text-sm bg-base-green text-white lg:text-lg lg:text-center"
 							>
 								{offices.map((off, index) => (
 									<option
@@ -170,10 +170,10 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 						</div>
 					</div>
 					<div className="w-[70%] h-full flex flex-col">
-						<div className="w-full h-[70%] p-3 rounded-2xl bg-white shadow-sm">
+						<div className="w-full p-3 rounded-lg bg-white shadow-sm">
 							<div className="w-full flex items-center">
 								<div className="w-full flex items-center">
-									<Icons name={IconNames.PERFIL} size="sm" bg />
+									<Icons name={IconNames.PERFIL} selected size="sm" bg />
 									<p className="text-xs text-dark-green font-semibold lg:text-lg lg:ml-5">
 										Informações Pessoais
 									</p>
@@ -223,7 +223,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 								/>
 							</fieldset>
 							<div className="w-100 flex items-center flex-col lg:flex-row">
-								<fieldset className="relative w-full my-2 lg:mt-4 lg:w-[38%] lg:mr-4">
+								<fieldset className="relative w-full my-2 lg:mt-4 lg:w-[30%] lg:mr-3">
 									<input
 										type="text"
 										maxLength={10}
@@ -261,7 +261,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
                       "
 									/>
 								</fieldset>
-								<fieldset className="relative w-full my-2 lg:mt-4">
+								<fieldset className="relative w-[70%] my-2 lg:mt-4">
 									<input
 										type="email"
 										value={email}
@@ -300,7 +300,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 								</fieldset>
 							</div>
 							<div className="w-full flex items-center flex-row justify-between">
-								<fieldset className="relative w-[48%] my-2 lg:mt-4 lg:w-[49%]">
+								<fieldset className="relative w-[50%] my-2 mr-3 lg:mt-4">
 									<input
 										type="tel"
 										maxLength={16}
@@ -339,7 +339,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 									/>
 								</fieldset>
 
-								<fieldset className="relative w-[48%] my-2 lg:mt-4 lg:w-[49%]">
+								<fieldset className="relative w-[50%] my-2 lg:mt-4">
 									<input
 										type="tel"
 										maxLength={16}
@@ -449,7 +449,7 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 								</fieldset>
 							</div>
 						</div>
-						<div className="w-full h-[30%] mt-6 rounded-2xl bg-base-green text-center p-2">
+						<div className="w-full h-[9rem] mt-6 rounded-lg bg-base-green text-center p-2">
 							<p className="text-xs text-white lg:text-base">
 								Mais informações
 							</p>

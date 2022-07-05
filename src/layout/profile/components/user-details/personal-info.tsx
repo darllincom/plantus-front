@@ -8,7 +8,7 @@ type UserDetailsProps = {
 export default function PersonalInfo({ user }: UserDetailsProps) {
 	return (
 		<div className="w-[22rem] lg:w-full flex flex-row items-start justify-start">
-			<div className="w-52 h-[22rem] rounded-lg bg-dark-green flex p-5 items-center content-start justify-start flex-col py-4 lg:w-[30%] lg:mr-5">
+			<div className="w-52 rounded-lg bg-dark-green flex p-5 items-center content-start justify-start flex-col py-4 lg:w-[30%] lg:mr-5">
 				<div className="relative">
 					<img
 						src={
@@ -45,12 +45,12 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 						</p>
 					</div>
 					<div className="relative w-full my-1 lg:mt-4">
-						<div className="w-28 bg-white h-5 absolute -top-3 left-2"></div>
+						<div className="w-28 bg-white h-3 absolute -top-2 left-3"></div>
 						<label
 							htmlFor="nome-completo"
-							className="absolute -top-3 left-3 text-light-gray text-xs"
+							className="absolute -top-2 left-4 text-light-gray text-xs"
 						>
-							Nome completo:
+							Nome Completo:
 						</label>
 						<p
 							className=" 
@@ -61,10 +61,10 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 					</div>
 					<div className="w-100 flex items-center flex-col lg:flex-row">
 						<div className="relative w-[30%] my-1 mr-3 lg:mt-4">
-							<div className="w-36 bg-white h-5 absolute -top-3 left-2"></div>
+							<div className="w-36 bg-white h-3 absolute -top-2 left-3"></div>
 							<label
 								htmlFor="nome-completo"
-								className="absolute -top-3 left-3 text-light-gray text-xs"
+								className="absolute -top-2 left-4 text-light-gray text-xs"
 							>
 								Data de Nascimento:
 							</label>
@@ -76,10 +76,10 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 							</p>
 						</div>
 						<div className="relative w-[70%] my-1 lg:mt-4">
-							<div className="w-14 bg-white h-5 absolute -top-3 left-2"></div>
+							<div className="w-14 bg-white h-3 absolute -top-2 left-3"></div>
 							<label
 								htmlFor="nome-completo"
-								className="absolute -top-3 left-3 text-light-gray text-xs"
+								className="absolute -top-2 left-4 text-light-gray text-xs"
 							>
 								Email:
 							</label>
@@ -93,10 +93,10 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 					</div>
 					<div className="w-full flex items-center flex-row justify-between">
 						<div className="relative w-[50%] my-1 mr-3 lg:mt-4">
-							<div className="w-16 bg-white h-5 absolute -top-3 left-2"></div>
+							<div className="w-16 bg-white h-3 absolute -top-2 left-3"></div>
 							<label
 								htmlFor="nome-completo"
-								className="absolute -top-3 left-3 text-light-gray text-xs"
+								className="absolute -top-2 left-4 text-light-gray text-xs"
 							>
 								Telefone:
 							</label>
@@ -108,11 +108,11 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 							</p>
 						</div>
 
-						<div className="relative w-[70%] my-1 lg:mt-4">
-							<div className="w-20 bg-white h-5 absolute -top-3 left-2"></div>
+						<div className="relative w-[50%] my-1 lg:mt-4">
+							<div className="w-20 bg-white h-3 absolute -top-2 left-3"></div>
 							<label
 								htmlFor="nome-completo"
-								className="absolute -top-3 left-3 text-light-gray text-xs"
+								className="absolute -top-2 left-4 text-light-gray text-xs"
 							>
 								Whatsapp:
 							</label>
@@ -126,10 +126,10 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 					</div>
 					<div className="w-full flex items-center justify-between">
 						<div className="relative w-[50%] my-1 lg:mt-4">
-							<div className="w-32 bg-white h-5 absolute -top-3 left-2"></div>
+							<div className="w-32 bg-white h-3 absolute -top-2 left-3"></div>
 							<label
 								htmlFor="nome-completo"
-								className="absolute -top-3 left-3 text-light-gray text-xs"
+								className="absolute -top-2 left-4 text-light-gray text-xs"
 							>
 								Inicio na Plantus:
 							</label>
@@ -149,7 +149,9 @@ export default function PersonalInfo({ user }: UserDetailsProps) {
 								)}
 							</div>
 							<p className="text-[0.65rem] lg:text-sm">
-								Não possui pendência de cadastro
+								{user.hasRegisteringPending
+									? 'Possui pendências de cadastro'
+									: 'Não possui pendências de cadastro'}
 							</p>
 						</div>
 					</div>
