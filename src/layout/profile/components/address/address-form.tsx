@@ -29,21 +29,24 @@ export default function AddressForm({ address }: AddressFormProps) {
 		e.preventDefault();
 
 		if (address) {
-			const resp = await UserRepository.updateAddress(
-				id!,
-				{
-					streetName,
-					addressNumber,
-					CEP,
-					district,
-					state,
-					city,
-					complementOrReference
-				},
-				comprovant ? comprovant : comprovantText
-			);
+			try {
+				await UserRepository.updateAddress(
+					id!,
+					{
+						streetName,
+						addressNumber,
+						CEP,
+						district,
+						state,
+						city,
+						complementOrReference
+					},
+					comprovant || comprovantText
+				);
+			} catch (error) {
+			}
 		} else {
-			const resp = await UserRepository.createAddress(
+			await UserRepository.createAddress(
 				id!,
 				{
 					streetName,
@@ -238,7 +241,7 @@ export default function AddressForm({ address }: AddressFormProps) {
 							maxLength={2}
 							minLength={2}
 							value={state}
-							onChange={(e) => setState(e.target.value)}
+							onChange={(e) => setState(e.target.value.toUpperCase())}
 							className=" 
                     border-light-green 
               border-2 rounded-xl 
@@ -363,7 +366,7 @@ export default function AddressForm({ address }: AddressFormProps) {
 							>
 								{comprovant?.name ? comprovant?.name : comprovantText}
 							</p>
-							<Icons name={IconNames.FILE} size="sm" />
+							<Icons name={IconNames.FILE} size="lg" />
 						</div>
 					</fieldset>
 				</div>

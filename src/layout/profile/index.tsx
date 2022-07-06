@@ -63,7 +63,7 @@ export default function Profile() {
 			) : (
 				<>
 					<UserDetails user={userProfile!} />
-					{user?.office === 'MASTER' || user?.office === 'RH ' ? (
+					{user?.office === 'MASTER' || user?.office === 'RH' ? (
 						<>
 							<nav className="w-full mt-4 relative">
 								<ul className="w-full flex items-center justify-around">

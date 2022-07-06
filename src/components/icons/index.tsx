@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Edit from './components/Edit';
+import File from './components/File';
 import Home from './components/Home';
 import HomeSelected from './components/HomeSelected';
 import Profile from './components/Profile';
@@ -11,11 +12,12 @@ import X from './components/X';
 
 export enum IconNames {
 	PERFIL = 'perfil',
-	EDIT = 'file',
+	EDIT = 'edit',
 	X = 'x',
 	V = 'v',
 	HOME = 'home',
-	EQUIPE = 'equipe'
+	EQUIPE = 'equipe',
+	FILE = 'file'
 }
 
 type IconsProps = {
@@ -36,8 +38,8 @@ export default function Icons({ name, size, bg, selected }: IconsProps) {
 								{selected ? <HomeSelected size={size} /> : <Home size={size} />}
 							</>
 						);
-          case IconNames.EQUIPE:
-            return (
+					case IconNames.EQUIPE:
+						return (
 							<>
 								{bg ? (
 									<>
@@ -104,6 +106,8 @@ export default function Icons({ name, size, bg, selected }: IconsProps) {
 						return <V size={size} />;
 					case IconNames.X:
 						return <X size={size} />;
+					case IconNames.FILE:
+						return <File size={size} />;
 				}
 			})()}
 		</>

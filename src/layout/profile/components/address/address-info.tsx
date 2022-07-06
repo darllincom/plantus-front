@@ -281,7 +281,7 @@ export default function AddressInfo({ address }: AddressInfoProps) {
 								? address.residenceComprovant
 								: 'Documento Pendente'}
 						</label>
-						<Icons name={IconNames.FILE} size="sm" />
+						<Icons name={IconNames.FILE} size="lg" />
 					</div>
 				</fieldset>
 			</div>

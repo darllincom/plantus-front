@@ -29,7 +29,7 @@ export default function Team() {
 	return (
 		<div className="relative w-full">
 			<Header />
-			{isLoading && team ? (
+			{isLoading ? (
 				<Loader />
 			) : (
 				<>
