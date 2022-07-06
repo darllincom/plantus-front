@@ -14,7 +14,7 @@ export default function NotFound() {
 		<div className="container relative bg-dark-white max-w-none mx-auto w-screen h-screen flex justify-between items-center content-center flex-row">
 			<Divider />
 			<main className="w-1/2 h-screen bg-white transition-all flex justify-start items-center content-center flex-col">
-				<PlantusHeader />
+				<PlantusHeader size='lg' />
 				<h3 className="text-light-gray text-xl mt-20">Página em Construção</h3>
 				<button
 					className="
