@@ -1,12 +1,12 @@
+import { Route, Routes } from 'react-router-dom';
 import Sidebar from '../../components/sidebar';
 import Footer from '../../components/footer';
 import Welcome from '../../layout/welcome';
 import ContentBar from '../../components/content-bar';
 import Profile from '../../layout/profile';
-import { Route, Routes } from 'react-router-dom';
-import { ProfileProvider } from '../../context/profile-provider';
 import Team from '../../layout/team';
 import CreateUser from '../../layout/create-user';
+import { ProfileProvider } from '../../context/profile-provider';
 
 export default function MainTemplate() {
 	return (
@@ -31,8 +31,8 @@ export default function MainTemplate() {
 								</ProfileProvider>
 							}
 						/>
-            <Route path='/perfil/adicionar' element={<CreateUser />} />
-            <Route path='/equipe' element={<Team />} />
+						<Route path="/perfil/adicionar" element={<CreateUser />} />
+						<Route path="/equipe" element={<Team />} />
 					</Routes>
 				</section>
 				<ContentBar />
