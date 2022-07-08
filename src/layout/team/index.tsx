@@ -7,15 +7,17 @@ import Header from './components/header';
 
 export default function Team() {
 	const [team, setTeam] = useState<Partial<User[]>>();
+
 	const [isLoading, setLoading] = useState(false);
 
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		async function handleFetchTeam() {
-			const response = await api.get('/team?pageSize=10&page=1');
+			const response = await api.get(`/team`);
 
-			setTeam(response.data.data);
+			setTeam(response.data);
+
 		}
 
 		setLoading(true);
@@ -33,10 +35,7 @@ export default function Team() {
 				<Loader />
 			) : (
 				<>
-					{/* <div className="w-full my-8">
-						<input type="text" placeholder="Pesquisar por nome" />
-					</div> */}
-					<div className="w-full items-start flex flex-wrap justify-start mb-16">
+					<div className="grid grid-cols-3 gap-2 mb-16 2xl:grid-cols-4">
 						{team?.map((member) => (
 							<div
 								key={member?.id}
