@@ -31,9 +31,9 @@ export default function CreateUser() {
 	const [offices, setOffices] = useState(['']);
 
 	const [successfullySubmitted, setSuccessfullSubmitted] = useState(false);
-	
+
 	const [hasError, setError] = useState(false);
-	const [errors, setErrors] = useState([''])
+	const [errors, setErrors] = useState(['']);
 
 	const navigate = useNavigate();
 
@@ -93,9 +93,7 @@ export default function CreateUser() {
 				}
 
 				setError(true);
-				setErrors(error.response?.data.message.map(
-					(mess: string) => mess
-				))
+				setErrors(error.response?.data.message.map((mess: string) => mess));
 			}
 		}
 	}
@@ -110,14 +108,26 @@ export default function CreateUser() {
 					</div>
 				</div>
 			) : (
-				<div className='relative'>
-          <div className={`absolute w-2/4 shadow-lg bg-white p-4 z-50 rounded-lg top-[25%] left-[25%] flex items-center flex-col justify-center ${hasError ? 'block' : 'hidden'}`}>
-            <h1 className='text-center text-lg text-red-600 font-semibold'>Oops... Alguma coisa deu errado...</h1>
+				<div className="relative">
+					<div
+						className={`absolute w-2/4 shadow-lg bg-white p-4 z-50 rounded-lg top-[25%] left-[25%] flex items-center flex-col justify-center ${
+							hasError ? 'block' : 'hidden'
+						}`}
+					>
+						<h1 className="text-center text-lg text-red-600 font-semibold">
+							Oops... Alguma coisa deu errado...
+						</h1>
 						<div className="w-full my-3">
-							<p>O erros foram: {errors.map(err => `${err}, `)}</p>
+							<p>O erros foram: {errors.map((err) => `${err}, `)}</p>
 						</div>
-						<button onClick={() => setError(false)} className='bg-light-green py-2 px-6 rounded-lg text-base font-semibold'>Entendi</button>
-          </div>
+						<button
+							type={'button'}
+							onClick={() => setError(false)}
+							className="bg-light-green py-2 px-6 rounded-lg text-base font-semibold"
+						>
+							Entendi
+						</button>
+					</div>
 					<form onSubmit={handleSubmit}>
 						<header className="sticky bg-dark-white/80 backdrop-blur-sm bg-clip-padding py-4 px-3 top-0 z-50 mt-10 xl:mt-16 flex w-full items-center justify-between">
 							<div className=" flex items-center">
