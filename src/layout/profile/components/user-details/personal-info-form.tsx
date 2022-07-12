@@ -1,10 +1,11 @@
 import { AxiosError } from 'axios';
-import { FormEvent, useContext, useEffect, useState } from 'react';
+import { FormEvent, MouseEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icons, { IconNames } from '../../../../components/icons';
 import { ProfileContext } from '../../../../context/profile-provider';
 import { User } from '../../../../models/user';
 import { UserRepository } from '../../../../repositories/user-repository';
+import UploadService from '../../../../services/upload-service';
 import dateMask from '../../../../utils/dateMask';
 import phoneMask from '../../../../utils/phoneMask';
 
@@ -37,10 +38,81 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 	const [hasError, setError] = useState(false);
 	const [errors, setErrors] = useState(['']);
 
+	const [profilePopup, setProfilePopup] = useState(false);
+
 	async function handleFetchOffices() {
 		const res = await UserRepository.fetchOffices();
 
 		setOffices(res.data);
+	}
+
+	const { handleEdition, handleLoading } = useContext(ProfileContext);
+
+	const { id } = useParams();
+	const navigate = useNavigate();
+
+	async function updateProfilePicture(e: MouseEvent) {
+		e.preventDefault();
+
+		try {
+			const response = await UploadService.uploadImage(
+				'plantus',
+				'user-images',
+				image!
+			);
+
+			await UserRepository.updateProfilePicture(id!, response.Location);
+
+			setSuccessfullSubmitted(true);
+			setTimeout(() => {
+				handleEdition!();
+				navigate(`/perfil/${id}`);
+			}, 2000);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	async function handleSubmit(e: FormEvent) {
+		e.preventDefault();
+
+		handleLoading!();
+
+		try {
+			await UserRepository.updatePersonalInfo(id!, {
+				fullName,
+				birthDate,
+				credentials: {
+					email
+				},
+				phone,
+				whatsapp,
+				dateStarted,
+				informations,
+				hasRegisteringPending,
+				office,
+				occupation
+			});
+
+			setSuccessfullSubmitted(true);
+			setTimeout(() => {
+				handleEdition!();
+				navigate(`/perfil/${id}`);
+			}, 2000);
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				if (error.code === 'Internal Server Error') {
+					alert(
+						'Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível'
+					);
+				}
+
+				setError(true);
+				setErrors(error.response?.data.message.map((mess: string) => mess));
+			}
+		}
+
+		handleLoading!();
 	}
 
 	useEffect(() => {
@@ -48,20 +120,6 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 			setImagePreview(window.URL.createObjectURL(image));
 		}
 	}, [image]);
-
-	useEffect(() => {
-		setOffice(user.office);
-		setOccupation(user.occupation);
-
-		handleFetchOffices();
-
-		setImageUrl(user.image!);
-	}, [user]);
-
-	const { handleEdition, handleLoading } = useContext(ProfileContext);
-
-	const { id } = useParams();
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		setFullName(user.fullName);
@@ -73,53 +131,14 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 
 		setDateStarted(user.dateStarted);
 		setBirthDate(dateMask(user.birthDate));
+
+		setOffice(user.office);
+		setOccupation(user.occupation);
+
+		handleFetchOffices();
+
+		setImageUrl(user.image!);
 	}, [user]);
-
-	async function handleSubmit(e: FormEvent) {
-		e.preventDefault();
-
-		handleLoading!();
-
-		try {
-			await UserRepository.updatePersonalInfo(
-				id!,
-				{
-					fullName,
-					birthDate,
-					credentials: {
-						email
-					},
-					phone,
-					whatsapp,
-					dateStarted,
-					informations,
-					hasRegisteringPending,
-					office,
-					occupation
-				},
-				image || imageUrl
-			);
-
-			setSuccessfullSubmitted(true);
-			setTimeout(() => {
-        handleEdition!();
-				navigate(`/perfil/${id}`);
-			}, 2000);
-		} catch (error) {
-			if (error instanceof AxiosError) {
-				if (error.code === 'Internal Server Error') {
-					alert(
-						'Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível'
-					);
-				}
-
-        setError(true);
-				setErrors(error.response?.data.message.map((mess: string) => mess));
-			}
-		}
-
-		handleLoading!();
-	}
 
 	return (
 		<div className="h-full w-full">
@@ -151,6 +170,58 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 							Entendi
 						</button>
 					</div>
+					<div
+						className={`w-full h-screen bg-slate-300/50 backdrop-blur-md fixed z-50 top-0 ${
+							profilePopup ? 'block' : 'hidden'
+						}`}
+					>
+						<div
+							className="
+                absolute w-[30%] h-[40%] bg-white z-50 p-3
+                top-[25%] left-[25%] rounded-lg shadow-lg 
+              "
+						>
+							<div className="w-full flex items-center justify-between">
+								<h1 className="text-slate-500 text-lg">
+									Atualizar Foto do Perfil
+								</h1>
+								<button onClick={() => setProfilePopup(false)}>
+									<Icons name={IconNames.X} size="sm" />
+								</button>
+							</div>
+							<div className="w-full h-full flex mt-4 items-start justify-around">
+								<div className="w-[65%] h-[80%] border-r border-slate-300">
+									<div className="w-[20rem] h-[20rem] bg-slate-200 flex items-center justify-center flex-row rounded-full">
+										<img
+											src={imagePreview !== '' ? imagePreview : imageUrl}
+											alt=""
+											className="w-[95%] h-[95%] rounded-full bg-white"
+										/>
+									</div>
+								</div>
+								<div className="w-[30%]  h-full flex items-center flex-col justify-evenly">
+									<div className="w-full h-10 flex items-center justify-start relative">
+										<h1 className="text-center">Escolha uma imagem</h1>
+										<Icons name={IconNames.EDIT} size="sm" bg />
+										<input
+											type="file"
+											name="profile-picture"
+											onChange={(e) => setImage(e.target.files![0])}
+											accept="image/*"
+											id="profile-picture"
+											className="absolute opacity-0"
+										/>
+									</div>
+									<button
+										onClick={(e) => updateProfilePicture(e)}
+										className="py-1 w-full bg-base-green text-white rounded-lg"
+									>
+										Atualizar
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 					<form
 						onSubmit={handleSubmit}
 						className="h-full w-full flex flex-row items-start justify-start"
@@ -159,20 +230,16 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 							<div className="w-full h-[67%] bg-dark-green rounded-lg p-5 text-white flex items-center content-start justify-start flex-col shadow">
 								<div className="relative">
 									<img
-										src={imagePreview !== '' ? imagePreview : imageUrl}
+										src={imageUrl}
 										alt="Imagem do usuário"
 										loading="lazy"
 										className="rounded-full object-cover w-20 h-32 border-2 mt-3 border-white bg-white lg:w-32"
 									/>
 									<div className="absolute top-3 w-32 h-32 rounded-full bg-white/50 flex items-center justify-center content-center flex-col">
-										<input
-											type="file"
-											accept="image/*"
-											onChange={(e) => setImage(e.currentTarget.files![0])}
-											className="text-xs h-full rounded-full flex flex-col w-full opacity-0 absolute cursor-pointer"
-										/>
 										<div className="w-16 h-16 bg-white rounded-full flex items-center justify-center content-center flex-col">
-											<Icons name={IconNames.EDIT} size="lg" bg />
+											<a onClick={() => setProfilePopup(true)}>
+												<Icons name={IconNames.EDIT} size="lg" bg />
+											</a>
 										</div>
 									</div>
 									<div className="absolute bottom-0 -right-2 w-5 h-5 rounded-full bg-white border-light-green border-2">

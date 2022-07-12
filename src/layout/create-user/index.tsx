@@ -1,9 +1,9 @@
 import { AxiosError } from 'axios';
 import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../../api/base';
 import Icons, { IconNames } from '../../components/icons';
 import { UserRepository } from '../../repositories/user-repository';
+import UploadService from '../../services/upload-service';
 import cpfMask from '../../utils/cpfMask';
 import dateMask from '../../utils/dateMask';
 import phoneMask from '../../utils/phoneMask';
@@ -56,29 +56,31 @@ export default function CreateUser() {
 	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
 
-		const formData = new FormData();
-
-		formData.append('fullName', fullName);
-		formData.append('birthDate', birthDate);
-		formData.append('cpf', CPF);
-		formData.append('phone', phone);
-		formData.append('whatsapp', whatsapp);
-		formData.append('dateStarted', startedDate);
-		formData.append('office', office);
-		formData.append('occupation', occupation);
-		formData.append('informations', informations);
-		formData.append('gender', gender);
-		formData.append('hasRegisteringPending', 'true');
-		formData.append('imageFile', image!);
-		formData.append('email', email);
-		formData.append('password', password);
-
 		try {
-			const resp = await api.post('/auth/signup', formData, {
-				headers: {
-					'content-type': 'multipart/form-data'
-				}
-			});
+			const response = await UploadService.uploadImage(
+				'plantus',
+				'user-images',
+				image!
+			);
+
+			const resp = await UserRepository.createUser(
+				{
+					fullName,
+					birthDate,
+					cpf: CPF,
+					phone,
+					whatsapp,
+					dateStarted: startedDate,
+					office,
+					occupation,
+					informations,
+					gender,
+					hasRegisteringPending: 'true',
+					image: response.Location
+				},
+				email,
+				password
+			);
 
 			setSuccessfullSubmitted(true);
 			setTimeout(() => {
@@ -90,6 +92,11 @@ export default function CreateUser() {
 					alert(
 						'Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível'
 					);
+				}
+
+				if (error.response?.status === 409) {
+					setError(true);
+					setErrors([error.response?.data.message]);
 				}
 
 				setError(true);
