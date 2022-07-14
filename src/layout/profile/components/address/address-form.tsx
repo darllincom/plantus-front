@@ -1,11 +1,12 @@
 import { Address as AddressModel } from '../../../../models/address';
-import { FormEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { FormEvent, useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { UserRepository } from '../../../../repositories/user-repository';
 import Icons, { IconNames } from '../../../../components/icons';
 import maskedCep from '../../../../utils/cepMask';
 import UploadService from '../../../../services/upload-service';
 import { AxiosError } from 'axios';
+import { ProfileContext } from '../../../../context/profile-provider';
 
 type AddressFormProps = {
 	address?: AddressModel;
@@ -28,7 +29,10 @@ export default function AddressForm({ address }: AddressFormProps) {
 	const [hasError, setError] = useState(false);
 	const [errors, setErrors] = useState(['']);
 
+	const { handleEdition } = useContext(ProfileContext);
+
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
@@ -59,6 +63,9 @@ export default function AddressForm({ address }: AddressFormProps) {
 					complementOrReference,
 					residenceComprovant: comprovantUrl
 				});
+
+				handleEdition!();
+				navigate('/sucesso');
 			} catch (error) {
 				if (error instanceof AxiosError) {
 					if (error.response?.data.message === 'Internal server error') {
@@ -100,6 +107,9 @@ export default function AddressForm({ address }: AddressFormProps) {
 					complementOrReference,
 					residenceComprovant: comprovantUrl
 				});
+
+				handleEdition!();
+				navigate('/sucesso');
 			} catch (error) {
 				if (error instanceof AxiosError) {
 					if (error.response?.data.message === 'Internal server error') {

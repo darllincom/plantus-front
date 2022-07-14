@@ -63,11 +63,8 @@ export default function PersonalInfoForm({ user }: UserDetailsProps) {
 
 			await UserRepository.updateProfilePicture(id!, response.Location);
 
-			setSuccessfullSubmitted(true);
-			setTimeout(() => {
-				handleEdition!();
-				navigate(`/perfil/${id}`);
-			}, 2000);
+			handleEdition!();
+			navigate('/sucesso');
 		} catch (error) {
 			console.log(error);
 		}
