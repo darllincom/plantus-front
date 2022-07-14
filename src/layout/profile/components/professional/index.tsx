@@ -9,11 +9,13 @@ type ProfessionalProps = {
 export default function Professional({ professional }: ProfessionalProps) {
 	return (
 		<div className="w-full min-h-[15vh]">
-			{professional ? (
+			{/* {professional ? (
 				<ProfessionalInfo professional={professional} />
 			) : (
 				<NoInfo name="Informações Profissionais" />
-			)}
+			)} */}
+
+			<h1 className="text-center">Em breve</h1>
 		</div>
 	);
 }

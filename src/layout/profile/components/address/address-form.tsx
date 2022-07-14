@@ -1,9 +1,12 @@
 import { Address as AddressModel } from '../../../../models/address';
-import { FormEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { FormEvent, useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { UserRepository } from '../../../../repositories/user-repository';
 import Icons, { IconNames } from '../../../../components/icons';
 import maskedCep from '../../../../utils/cepMask';
+import UploadService from '../../../../services/upload-service';
+import { AxiosError } from 'axios';
+import { ProfileContext } from '../../../../context/profile-provider';
 
 type AddressFormProps = {
 	address?: AddressModel;
@@ -19,46 +22,111 @@ export default function AddressForm({ address }: AddressFormProps) {
 	const [complementOrReference, setComplementOrReference] = useState('');
 
 	const [comprovantText, setComprovantText] = useState(
-		'Comprovante de Residência'
+		'Comprovante de Residência *'
 	);
 	const [comprovant, setComprovant] = useState<File>();
 
+	const [hasError, setError] = useState(false);
+	const [errors, setErrors] = useState(['']);
+
+	const { handleEdition } = useContext(ProfileContext);
+
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
 
 		if (address) {
+			let comprovantUrl = '';
+
 			try {
-				await UserRepository.updateAddress(
-					id!,
-					{
-						streetName,
-						addressNumber,
-						CEP,
-						district,
-						state,
-						city,
-						complementOrReference
-					},
-					comprovant || comprovantText
-				);
-			} catch (error) {
-			}
-		} else {
-			await UserRepository.createAddress(
-				id!,
-				{
+				if (comprovant) {
+					const response = await UploadService.uploadImage(
+						'plantus',
+						'docs',
+						comprovant!
+					);
+
+					comprovantUrl = response.Location;
+				} else {
+					comprovantUrl = comprovantText;
+				}
+
+				await UserRepository.updateAddress(id!, {
 					streetName,
 					addressNumber,
 					CEP,
 					district,
 					state,
 					city,
-					complementOrReference
-				},
-				comprovant!
-			);
+					complementOrReference,
+					residenceComprovant: comprovantUrl
+				});
+
+				handleEdition!();
+				navigate('/sucesso');
+			} catch (error) {
+				if (error instanceof AxiosError) {
+					if (error.response?.data.message === 'Internal server error') {
+						alert(
+							'Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível'
+						);
+					} else {
+						if (error.response?.status === 409) {
+							setError(true);
+							setErrors([error.response?.data.message]);
+						}
+
+						setError(true);
+						setErrors(error.response?.data.message.map((mess: string) => mess));
+					}
+				}
+			}
+		} else {
+			try {
+				let comprovantUrl = '';
+
+				if (comprovant) {
+					const response = await UploadService.uploadImage(
+						'plantus',
+						'docs',
+						comprovant!
+					);
+
+					comprovantUrl = response.Location;
+				}
+
+				await UserRepository.createAddress(id!, {
+					streetName,
+					addressNumber,
+					CEP,
+					district,
+					state,
+					city,
+					complementOrReference,
+					residenceComprovant: comprovantUrl
+				});
+
+				handleEdition!();
+				navigate('/sucesso');
+			} catch (error) {
+				if (error instanceof AxiosError) {
+					if (error.response?.data.message === 'Internal server error') {
+						alert(
+							'Algum erro interno aconteceu. Mas fique tranquilo, iremos resolver isso o mais rápido possível'
+						);
+					} else {
+						if (error.response?.status === 409) {
+							setError(true);
+							setErrors([error.response?.data.message]);
+						}
+
+						setError(true);
+						setErrors(error.response?.data.message.map((mess: string) => mess));
+					}
+				}
+			}
 		}
 	}
 
@@ -76,7 +144,26 @@ export default function AddressForm({ address }: AddressFormProps) {
 	}, [address]);
 
 	return (
-		<div className="w-full">
+		<div className="w-full relative">
+			<div
+				className={`absolute w-2/4 shadow-lg bg-white p-4 z-50 rounded-lg top-[25%] left-[25%] flex items-center flex-col justify-center ${
+					hasError ? 'block' : 'hidden'
+				}`}
+			>
+				<h1 className="text-center text-lg text-red-600 font-semibold">
+					Oops... Alguma coisa deu errado...
+				</h1>
+				<div className="w-full my-3">
+					<p>O erros foram: {errors.map((err) => `${err}, `)}</p>
+				</div>
+				<button
+					type={'button'}
+					onClick={() => setError(false)}
+					className="bg-light-green py-2 px-6 rounded-lg text-base font-semibold"
+				>
+					Entendi
+				</button>
+			</div>
 			<form onSubmit={handleSubmit}>
 				<div className="w-full flex justify-between items-center">
 					<fieldset className="relative w-[48%] my-2 lg:mt-4">

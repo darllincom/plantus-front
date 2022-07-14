@@ -7,6 +7,7 @@ import Profile from '../../layout/profile';
 import Team from '../../layout/team';
 import CreateUser from '../../layout/create-user';
 import { ProfileProvider } from '../../context/profile-provider';
+import SuccessPage from '../../layout/success';
 
 export default function MainTemplate() {
 	return (
@@ -22,7 +23,7 @@ export default function MainTemplate() {
 			<main className="container fixed right-0 h-screen flex flex-row justify-between w-5/6 max-w-none lg:w-[90%]">
 				<section className="w-9/12 px-6 overflow-auto">
 					<Routes>
-						<Route path="" element={<Welcome />} />
+						<Route path="/" element={<Welcome />} />
 						<Route
 							path="/perfil/:id"
 							element={
@@ -33,6 +34,7 @@ export default function MainTemplate() {
 						/>
 						<Route path="/perfil/adicionar" element={<CreateUser />} />
 						<Route path="/equipe" element={<Team />} />
+						<Route path="sucesso" element={<SuccessPage />} />
 					</Routes>
 				</section>
 				<ContentBar />
