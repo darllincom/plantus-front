@@ -9,11 +9,13 @@ type DocumentsProps = {
 export default function Documents({ documents }: DocumentsProps) {
 	return (
 		<div className="w-full min-h-[15vh]">
-			{documents ? (
+			{/* {documents ? (
 				<DocumentsInfo documents={documents} />
 			) : (
 				<NoInfo name="Documentos" />
-			)}
+			)} */}
+
+			<h1 className="text-center">Em breve</h1>
 		</div>
 	);
 }

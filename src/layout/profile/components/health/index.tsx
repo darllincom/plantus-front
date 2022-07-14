@@ -9,15 +9,17 @@ type HealthProps = {
 };
 
 export default function Health({ health }: HealthProps) {
-	const { isEdition } = useContext(ProfileContext)
-  
-  return (
+	const { isEdition } = useContext(ProfileContext);
+
+	return (
 		<div className="w-full min-h-[15vh]">
-			{ isEdition ? (
+			{/* { isEdition ? (
         <HealthForm health={health} />
       ) : (
         <HealthWrapper health={health} />
-      ) }
+      ) } */}
+
+			<h1 className='text-center'>Em breve</h1>
 		</div>
 	);
 }
