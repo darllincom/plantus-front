@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { UserRepository } from '../../../../repositories/user-repository';
 import Icons, { IconNames } from '../../../../components/icons';
 import maskedCep from '../../../../utils/cepMask';
+import UploadService from '../../../../services/upload-service';
 
 type AddressFormProps = {
 	address?: AddressModel;
@@ -29,36 +30,55 @@ export default function AddressForm({ address }: AddressFormProps) {
 		e.preventDefault();
 
 		if (address) {
-			try {
-				await UserRepository.updateAddress(
-					id!,
-					{
-						streetName,
-						addressNumber,
-						CEP,
-						district,
-						state,
-						city,
-						complementOrReference
-					},
-					comprovant || comprovantText
+			let comprovantUrl = '';
+
+			if (comprovant) {
+				const response = await UploadService.uploadImage(
+					'plantus',
+					'docs',
+					comprovant!
 				);
-			} catch (error) {
+
+				comprovantUrl = response.Location;
+			} else {
+				comprovantUrl = comprovantText;
 			}
-		} else {
-			await UserRepository.createAddress(
-				id!,
-				{
+
+			try {
+				await UserRepository.updateAddress(id!, {
 					streetName,
 					addressNumber,
 					CEP,
 					district,
 					state,
 					city,
-					complementOrReference
-				},
-				comprovant!
-			);
+					complementOrReference,
+					residenceComprovant: comprovantUrl
+				});
+			} catch (error) {
+				console.log(error);
+			}
+		} else {
+			try {
+				const response = await UploadService.uploadImage(
+					'plantus',
+					'docs',
+					comprovant!
+				);
+
+				await UserRepository.createAddress(id!, {
+					streetName,
+					addressNumber,
+					CEP,
+					district,
+					state,
+					city,
+					complementOrReference,
+					residenceComprovant: response.Location
+				});
+			} catch (error) {
+				console.log(error);
+			}
 		}
 	}
 
