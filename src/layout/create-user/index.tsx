@@ -81,11 +81,8 @@ export default function CreateUser() {
 				email,
 				password
 			);
-
-			setSuccessfullSubmitted(true);
-			setTimeout(() => {
-				navigate(`/perfil/${resp.data.id}`);
-			}, 2000);
+      
+			navigate('/sucesso');
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				if (error.code === 'Internal Server Error') {

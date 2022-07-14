@@ -7,6 +7,7 @@ import Profile from '../../layout/profile';
 import Team from '../../layout/team';
 import CreateUser from '../../layout/create-user';
 import { ProfileProvider } from '../../context/profile-provider';
+import SuccessPage from '../../layout/success';
 
 export default function MainTemplate() {
 	return (
@@ -33,6 +34,7 @@ export default function MainTemplate() {
 						/>
 						<Route path="/perfil/adicionar" element={<CreateUser />} />
 						<Route path="/equipe" element={<Team />} />
+						<Route path="sucesso" element={<SuccessPage />} />
 					</Routes>
 				</section>
 				<ContentBar />
